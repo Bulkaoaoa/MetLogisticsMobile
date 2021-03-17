@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetallLogistic.App">
+    <Application.Resources>
+        <Color x:Key="MainBlue">#2958E5</Color>
+        <Color x:Key="LightBlue">#A5B5E5</Color>
+        <Color x:Key="AlmostWhiteBlue">#F5F7FF</Color>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#2958E5"></Setter>
+            <Setter Property="Margin" Value="16, 8" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="TextColor" Value="#2958E5" />
+            <Setter Property="Margin" Value="16, 8" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <Style TargetType="{x:Type Entry}">
+            <Setter Property="TextColor" Value="#2958E5" />
+            <Setter Property="Margin" Value="16, 8" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="PlaceholderColor" Value="#A5B5E5"></Setter>
+        </Style>
+        <Style TargetType="{x:Type Editor}">
+            <Setter Property="TextColor" Value="#2958E5" />
+            <Setter Property="Margin" Value="16, 8" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="PlaceholderColor" Value="#A5B5E5"></Setter>
+        </Style>
+        <Style TargetType="{x:Type Switch}">
+            <Setter Property="Margin" Value="16, 8" />
+        </Style>
+        <Style TargetType="{x:Type DatePicker}">
+            <Setter Property="TextColor" Value="#2958E5" />
+            <Setter Property="Margin" Value="16, 8" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <Style TargetType="{x:Type TimePicker}">
+            <Setter Property="TextColor" Value="#2958E5" />
+            <Setter Property="Margin" Value="16, 8" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        
+    </Application.Resources>
+</Application>

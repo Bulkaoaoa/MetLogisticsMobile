@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetallLogistic.Pages.Client.NomenclaturePage">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+            <Image Margin="0,0,0,0" HeightRequest="40" VerticalOptions="Center" WidthRequest="40" Source="LogoWhite.png"></Image>
+            <Label Margin="8,0,0,0" TextColor="White" FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="Список товаров"></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+            <Grid>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <Entry x:Name="EntrySearch" Placeholder="Поиск..." TextChanged="EntrySearch_TextChanged" HorizontalOptions="FillAndExpand"></Entry>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <ListView x:Name="LvNomenclatures" HasUnevenRows="True" IsPullToRefreshEnabled="True" Refreshing="LvNomenclatures_Refreshing"
+                              SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <SwipeView>
+                                        <SwipeView.LeftItems>
+                                            <SwipeItem IconImageSource="IconCart.png" BackgroundColor="{StaticResource MainBlue}" x:Name="SwipeItemAddToCart"
+                                                       Invoked="SwipeItemAddToCart_Invoked"> </SwipeItem>
+                                        </SwipeView.LeftItems>
+                                        <Grid HorizontalOptions="Start">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="70"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label VerticalOptions="Center" FontAttributes="Bold" Text="Номер:"></Label>
+                                                <Label VerticalOptions="Center" Text="{Binding Id}"></Label>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label VerticalOptions="Center" FontAttributes="Bold" Text="Название:"></Label>
+                                                <Label VerticalOptions="Center" Text="{Binding Name}"></Label>
+                                            </StackLayout>
+                                            <Rectangle Grid.ColumnSpan="2" VerticalOptions="End" HeightRequest="1" HorizontalOptions="FillAndExpand" 
+                                                       Fill="#2958E5"></Rectangle>
+                                            <Entry Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" 
+                                                   Text="1" x:Name="CurrCount"></Entry>
+                                        </Grid>
+                                    </SwipeView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+        </ScrollView>
+                <Image Source="FABNext.png" Margin="0,0, -20, -20" HeightRequest="150" WidthRequest="150" HorizontalOptions="End" VerticalOptions="End" x:Name="BtnFABStartNewOrder">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="FabTap" Tapped="FabTap_Tapped"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                </StackLayout>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

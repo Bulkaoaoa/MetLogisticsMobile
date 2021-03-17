@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetallLogistic.Pages.Client.MainPageClient">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+            <Image Margin="0,0,0,0" HeightRequest="40" VerticalOptions="Center" WidthRequest="40" Source="LogoWhite.png"></Image>
+            <Label Margin="8,0,0,0" TextColor="White" FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="Мои отгрузки"></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Image Source="WeDidntFindAnythig.png"  Margin="16, 8" HorizontalOptions="FillAndExpand"  x:Name="ImgNull"></Image>
+                <Label FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="Видимо у вас нет заказов на сегодня :С"></Label>
+            </StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Entry Placeholder="Поиск..." x:Name="EntrySearch" TextChanged="EntrySearch_TextChanged"></Entry>
+                <ListView x:Name="LvMyOrdersToday" HasUnevenRows="True" IsPullToRefreshEnabled="True" Refreshing="LvMyOrdersToday_Refreshing" 
+                      SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout HorizontalOptions="Start">
+                                    <StackLayout Margin="16, 8, 8, 8" Orientation="Horizontal">
+                                        <Label VerticalOptions="Center" Text="Заказ №" FontAttributes="Bold"></Label>
+                                        <Label VerticalOptions="Center" Text="{Binding Id}"></Label>
+                                    </StackLayout>
+                                    <StackLayout Margin="16, 8, 8, 8" Orientation="Horizontal">
+                                        <Label VerticalOptions="Center" Text="Время прибытия:" FontAttributes="Bold"></Label>
+                                        <Label VerticalOptions="Center" Text="{Binding DateTimeOfArrival ,StringFormat='{0:MMMM d, yyyy в HH:mm}'}"></Label>
+                                    </StackLayout>
+                                    <Rectangle VerticalOptions="End" HeightRequest="1" HorizontalOptions="FillAndExpand" Fill="#2958E5"></Rectangle>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Image Source="FABAdd.png" Margin="0,0, -20, -20" HeightRequest="150" WidthRequest="150" HorizontalOptions="End" VerticalOptions="End" x:Name="BtnFABStartNewOrder">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="FabTap" Tapped="FabTap_Tapped"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

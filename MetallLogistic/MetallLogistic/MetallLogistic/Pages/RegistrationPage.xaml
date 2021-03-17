@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetallLogistic.Pages.RegistrationPage" >
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+            <Image Margin="0,0,0,0" HeightRequest="40" VerticalOptions="Center" WidthRequest="40" Source="LogoWhite.png"></Image>
+            <Label Margin="8,0,0,0" TextColor="White" FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="Регистрация"> </Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <!--<ContentPage.ToolbarItems >
+        <ToolbarItem IconImageSource="BackButtonWhite.png" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+        <ToolbarItem IconImageSource="LogoWhite.png"></ToolbarItem>
+    </ContentPage.ToolbarItems>-->
+    <ContentPage.Content>
+
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <Entry Placeholder="Логин" x:Name="EntryLogin" HorizontalOptions="FillAndExpand"></Entry>
+            <Entry Placeholder="Пароль" IsPassword="True" HorizontalOptions="FillAndExpand" x:Name="EntryPassword"></Entry>
+            <Entry Placeholder="Название компании" x:Name="EntryCompanyName" HorizontalOptions="FillAndExpand"></Entry>
+            <Label TextColor="{StaticResource LightBlue}" FontSize="14" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Внимание, регистрация доступна только для клиентов"></Label>
+            <Button HorizontalOptions="FillAndExpand" Text="Регистрация" x:Name="BtnRegistration" Clicked="BtnRegistration_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

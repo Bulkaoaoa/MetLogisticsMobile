@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetallLogistic.Pages.Driver.MainPageDriver">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+            <Image Margin="16,0,0,0" HeightRequest="40" VerticalOptions="Center" WidthRequest="40" Source="LogoWhite.png"></Image>
+            <Label Margin="8,0,0,0" TextColor="White" FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="Мои заказы"></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid>
+            <Entry x:Name="EntrySearch" TextChanged="EntrySearch_TextChanged"></Entry>
+            <ScrollView>
+                <ListView x:Name="LVMyOrders" HasUnevenRows="True" ItemTapped="LVMyOrders_ItemTapped" IsPullToRefreshEnabled="True" Refreshing="LVMyOrders_Refreshing" 
+                      SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout HorizontalOptions="Start">
+                                    <StackLayout Margin="16, 8, 8, 8" Orientation="Horizontal">
+                                        <Label VerticalOptions="Center" Text="Заказ №" FontAttributes="Bold"></Label>
+                                        <Label VerticalOptions="Center" Text="{Binding Id}"></Label>
+                                    </StackLayout>
+                                    <StackLayout Margin="16, 8, 8, 8" Orientation="Horizontal">
+                                        <Label VerticalOptions="Center" Text="Время прибытия:" FontAttributes="Bold"></Label>
+                                        <Label VerticalOptions="Center" Text="{Binding DateTimeOfArrival ,StringFormat='{0:MMMM d, yyyy в HH:mm}'}"></Label>
+                                    </StackLayout>
+                                    <Rectangle VerticalOptions="End" HeightRequest="1" HorizontalOptions="FillAndExpand" Fill="#2958E5"></Rectangle>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
