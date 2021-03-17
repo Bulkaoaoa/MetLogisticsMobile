@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetallLogistic.Pages.Driver.StartOrderPage" >
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+            <Image Margin="16,0,0,0" HeightRequest="40" VerticalOptions="Center" WidthRequest="40" Source="LogoWhite.png"></Image>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <Label Text="Начать заказ" FontSize="Header" FontAttributes="Bold"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="№" FontSize="Header" FontAttributes="Bold"></Label>
+                <Label Text="{Binding Id}" FontSize="Header" FontAttributes="Bold"></Label> <!--Надо будет тут поменять биндинг-->
+            </StackLayout>
+            <Button x:Name="BtnGo" Clicked="BtnGo_Clicked" Text="Поехали">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
