@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetallLogistic.Android", "MetallLogistic\MetallLogistic.Android\MetallLogistic.Android.csproj", "{350171E5-C489-45AD-9841-366E5FD8C198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetallLogistic", "MetallLogistic\MetallLogistic\MetallLogistic.csproj", "{22607DC7-8F15-4B85-AAE7-A483C6B0E968}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetallLogistic", "MetallLogistic\MetallLogistic\MetallLogistic.csproj", "{22607DC7-8F15-4B85-AAE7-A483C6B0E968}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
