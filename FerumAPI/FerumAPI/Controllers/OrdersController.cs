@@ -87,8 +87,10 @@ namespace FerumAPI.Controllers
             order = new Order
             {
                 Id = orderId,
+                Client = db.Client.ToList().FirstOrDefault(p=>p.Id == clientId),
                 ClientId = clientId,
                 CourierId = courierId,
+                Courier = db.Courier.ToList().FirstOrDefault(p => p.Id == courierId),
                 DateOfCreate = dateOfCreate,
                 DateTimeOfArrivle = dateTimeOfArrivle
             };
@@ -98,7 +100,7 @@ namespace FerumAPI.Controllers
                 db.NomenclatureOfOrder.Add(new NomenclatureOfOrder
                 {
                     NumenclatureId = nomenclatureOfOrder.NumenclatureId,
-                    OrderId = nomenclatureOfOrder.OrderId,
+                    OrderId = order.Id,
                     Count = nomenclatureOfOrder.Count
                 });
             }

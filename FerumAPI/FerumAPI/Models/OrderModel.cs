@@ -13,7 +13,10 @@ namespace FerumAPI.Models
         {
             Id = order.Id;
             DateOfCreate = order.DateOfCreate;
-            Client = new ClientModel(order.Client);
+            if (order.Client != null)
+                Client = new ClientModel(order.Client);
+            if (order.Courier != null)
+                Courier = new CourierModel(order.Courier);
             Effectiveness = order.Effectiveness;
             DateTimeOfArrivle = order.DateTimeOfArrivle;
             NomenclatureOfOrder = order.NomenclatureOfOrder.ToList().ConvertAll(p => new NomenclatureOfOrderModel(p));
