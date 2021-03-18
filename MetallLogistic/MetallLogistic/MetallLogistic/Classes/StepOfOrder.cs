@@ -19,5 +19,61 @@ namespace MetallLogistic.Classes
         {
             get; set;
         }
+
+        public string ImagePath
+        {
+            get
+            {
+                switch (Proccess.Name)
+                {
+                    case "Ожидание за воротами":
+                        return "WaitingBehindGates.png";
+                    case "Проезд за ворота":
+                        return "MovingThroghtGates.png";
+                    case "Перемещение на склад":
+                        return "MovingToWareHouse.png";
+                    case "Погрузка":
+                        return "LoadingThings.png";
+                    case "Ожидание погрузки":
+                        return "WaitingForLoad.png"; 
+                    case "Ожидание выезда":
+                        return "WaitingForExit.png";
+                    case "Выезд с территории":
+                        return "Delivering.png";
+                    case "Перемещение на выезд":
+                        return "MovingToExit.png";
+                    default:
+                        return "FixingProblems.png";
+                }
+            }
+        }
+
+        public string FullStepText
+        {
+            get
+            {
+                switch (Proccess.Name)
+                {
+                    case "Ожидание за воротами":
+                        return "Жду за воротами...";
+                    case "Проезд за ворота":
+                        return "Проезжаю через ворота...";
+                    case "Перемещение на склад":
+                        return $"Еду на склад №{Movement.Warehouse.Name}...";
+                    case "Погрузка":
+                        return $"Погрузка {Shipment.Count} штрихкодов...";
+                    case "Ожидание погрузки":
+                        return "Жду погрузки...";
+                    case "Ожидание выезда":
+                        return "Жду выезда...";
+                    case "Выезд с территории":
+                        return "Выезжаю со склада...";
+                    case "Перемещение на выезд":
+                        return "Еду на выезд...";
+                    default:
+                        return "Что то пошло не так...";
+                }
+            }
+        }
     }
 }

@@ -9,8 +9,8 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-            <Label Text="{Binding FullOrderId}" FontAttributes="Bold" HorizontalTextAlignment="Start" Margin="16,0,16,0" LineBreakMode="WordWrap" FontSize="50"></Label>
-            <Label Text="Выезжаю..." FontAttributes="None" HorizontalTextAlignment="Start" Margin="16,0,16,-20" LineBreakMode="WordWrap" FontSize="30"></Label>
+            <Label Text="{Binding Order.FullOrderId}" FontAttributes="Bold" HorizontalTextAlignment="Start" Margin="16,0,16,0" LineBreakMode="WordWrap" FontSize="50"></Label>
+            <Label Text="{Binding FullStepText}" FontAttributes="None" HorizontalTextAlignment="Start" Margin="16,0,16,-20" LineBreakMode="WordWrap" FontSize="30"></Label>
             <Image Source="{Binding ImagePath}" HeightRequest="350"></Image>
             <Button Text="Дальше" x:Name="BtnNext" Margin="16,-30,16,0" Clicked="BtnNext_Clicked"></Button>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">

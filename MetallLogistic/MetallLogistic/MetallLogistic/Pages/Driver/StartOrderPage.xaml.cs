@@ -1,7 +1,9 @@
-﻿using MetallLogistic.Classes;
+﻿using Android.Widget;
+using MetallLogistic.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,9 +23,21 @@ namespace MetallLogistic.Pages.Driver
             _currOrder = currOrder;
         }
 
-        private void BtnGo_Clicked(object sender, EventArgs e)
+        private async void BtnGo_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Pages.Driver.StepPages.WaitingBehindGatesPage(_currOrder));
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                var listOfSteOfOrders = await client.PostAsync($"{AppData.ConectionString}StepOfOrders?orderId={_currOrder.Id}", null);
+                BtnGo.IsEnabled = false;
+                Navigation.PushAsync(new Pages.Driver.StepPage(_currOrder));
+            }
+            catch 
+            {
+                Toast.MakeText(Android.App.Application.Context, "Упс... у нас или у вас проблемы с интернет соединением :С", ToastLength.Long);
+            }
         }
     }
 }

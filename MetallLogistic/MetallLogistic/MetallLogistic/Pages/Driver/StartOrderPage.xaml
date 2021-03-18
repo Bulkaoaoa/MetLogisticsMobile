@@ -10,7 +10,6 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
             <Label Margin="16,4" Text="{Binding StartFullOrderId}" FontSize="50" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
-            <!--<Label Text="{Binding FullOrderId}" LineBreakMode="WordWrap" FontSize="20" FontAttributes="Bold"></Label>-->
             <Button x:Name="BtnGo" Clicked="BtnGo_Clicked" HorizontalOptions="FillAndExpand" Text="Поехали">
             </Button>
         </StackLayout>
