@@ -19,7 +19,6 @@ namespace FerumAPI.Models
                 CarNumber = courier.CarNumber;
                 Password = courier.Password;
                 Client = new ClientModel(courier.Client);
-                Order = courier.Order.ToList().ConvertAll(p => new OrderModel(p)).ToList();
             }
         }
 
@@ -33,7 +32,5 @@ namespace FerumAPI.Models
         public string ClientId { get; set; }
 
         public ClientModel Client { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public  List<OrderModel> Order { get; set; }
     }
 }

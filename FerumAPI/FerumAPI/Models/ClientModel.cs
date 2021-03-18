@@ -15,7 +15,6 @@ namespace FerumAPI.Models
             Name = client.Name;
             Login = client.Login;
             Password = client.Password;
-            //Courier = client.Courier.ToList().ConvertAll(p => new CourierModel(p));
         }
         public string Id { get; set; }
         public string Name { get; set; }

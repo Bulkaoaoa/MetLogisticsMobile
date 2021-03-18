@@ -76,37 +76,12 @@ namespace FerumAPI.Controllers
 
         // PUT: api/StepOfOrders/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutStepOfOrder(int id, StepOfOrder stepOfOrder)
+        public IHttpActionResult PutStepOfOrder(List<StepOfOrder> stepOfOrders)
         {
-            if (!ModelState.IsValid)
+            foreach (var item in stepOfOrders)
             {
-                return BadRequest(ModelState);
+                item.DateOfEnd = DateTime.UtcNow
             }
-
-            if (id != stepOfOrder.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(stepOfOrder).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StepOfOrderExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/StepOfOrders
