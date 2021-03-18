@@ -239,7 +239,130 @@ namespace FerumAPI.Controllers
             db.SaveChanges();
             return Ok(stepOfOrders.ToList().ConvertAll(p => new StepOfOrderModel(p)));
         }
-
+        [Route ("api/Courier/GetNewStep")]
+        public IHttpActionResult GetStepOfOrderNew(string orderId)
+        {
+            List<Proccess> proccesses = db.Proccess.ToList();
+            List<NomenclatureOfOrder> nomenclatureOfOrders = new List<NomenclatureOfOrder>();
+            List<NomenclatureOfOrder> nomenclatureOfOrdersNew = new List<NomenclatureOfOrder>();
+            List<NomenclatureOfWarehouse> nomenclatureOfWarehouses = new List<NomenclatureOfWarehouse>();
+            List<StepOfOrder> stepOfOrders = new List<StepOfOrder>();
+            List<Trouble> troubles = new List<Trouble>();
+            List<TypeOfTrouble> typeOfTroubles = new List<TypeOfTrouble>();
+            Order order = db.Order.ToList().FirstOrDefault(p => p.Id == orderId);
+            nomenclatureOfOrders = order.NomenclatureOfOrder.ToList();
+            nomenclatureOfWarehouses = db.NomenclatureOfWarehouse.ToList();
+            nomenclatureOfOrdersNew.AddRange(nomenclatureOfOrders);
+            typeOfTroubles = db.TypeOfTrouble.ToList();
+            //Хорошо бы это в метод, но мне лень думать дальше
+            stepOfOrders.Add(new StepOfOrder
+            {
+                isDone = false,
+                Order = order,
+                ProcessId = 1,
+                Proccess = proccesses.FirstOrDefault(p => p.Id == 1),
+                DateOfStart = DateTime.UtcNow.AddHours(3)
+            });
+            //Хорошо бы это в метод, но мне лень думать дальше
+            stepOfOrders.Add(new StepOfOrder
+            {
+                isDone = false,
+                Order = order,
+                ProcessId = 2,
+                Proccess = proccesses.FirstOrDefault(p => p.Id == 2),
+            });
+            while (nomenclatureOfOrders.Count > 0)
+            {
+                foreach (var item in nomenclatureOfOrders)
+                {
+                    var list = nomenclatureOfWarehouses.Where(p => p.Nomenclature == item.Nomenclature && p.Count - item.Count >= 0).ToList().OrderBy(p => p.Cell.WarehouseId).ToList();
+                    if (list.Count == 0)
+                    {
+                        troubles.Add(new Trouble
+                        {
+                            Description = $"{item.Nomenclature.Name} отсутствует на складе полностью или частично\nНе нашлось {item.Count} тонн",
+                            StepOfOrder = stepOfOrders[0],
+                            TypeOfTrouble = typeOfTroubles[0],
+                            TypeOfTroubleId = 1,
+                        });
+                        nomenclatureOfOrdersNew.Remove(item);
+                        continue;
+                    }
+                    var nomenclatureOfWarehouse = list.FirstOrDefault(p => p.Count >= item.Count);
+                    if (nomenclatureOfWarehouse != null)
+                    {
+                        stepOfOrders.Add(CreateShipment(order, item, nomenclatureOfWarehouse, item.Count, proccesses));
+                        list.FirstOrDefault(p => p == nomenclatureOfWarehouse).Count -= item.Count;
+                        nomenclatureOfOrdersNew.Remove(item);
+                    }
+                    else
+                    {
+                        nomenclatureOfWarehouse = list.FirstOrDefault();
+                        stepOfOrders.Add(CreateShipment(order, item, nomenclatureOfWarehouse, nomenclatureOfWarehouse.Count, proccesses));
+                        list.FirstOrDefault(p => p == nomenclatureOfWarehouse).Count = 0;
+                    }
+                }
+                nomenclatureOfOrders.Clear();
+                nomenclatureOfOrders.AddRange(nomenclatureOfOrdersNew);
+            }
+            var warehouse = new Warehouse();
+            foreach (var item in stepOfOrders.Skip(2).OrderBy(p => p.Shipment.NomenclatureOfWarehouse.Cell.WarehouseId).ToList())
+            {
+                var currentWarehouse = item.Shipment.NomenclatureOfWarehouse.Cell.Warehouse;
+                if (currentWarehouse != warehouse)
+                {
+                    var move = new Movement
+                    {
+                        Warehouse = currentWarehouse,
+                        WarehouseId = currentWarehouse.Id
+                    };
+                    stepOfOrders.Insert(stepOfOrders.IndexOf(item), new StepOfOrder
+                    {
+                        isDone = false,
+                        Movement = move,
+                        Order = order,
+                        ProcessId = 3,
+                        Proccess = proccesses.FirstOrDefault(p => p.Id == 3),
+                    });
+                    stepOfOrders.Insert(stepOfOrders.IndexOf(item), new StepOfOrder
+                    {
+                        isDone = false,
+                        Order = order,
+                        ProcessId = 6,
+                        Proccess = proccesses.FirstOrDefault(p => p.Id == 6),
+                    });
+                    warehouse = currentWarehouse;
+                }
+            }
+            //Хорошо бы это в метод, но мне лень думать дальше
+            stepOfOrders.Add(new StepOfOrder
+            {
+                isDone = false,
+                Order = order,
+                ProcessId = 9,
+                Proccess = proccesses.FirstOrDefault(p => p.Id == 9),
+            });
+            //Хорошо бы это в метод, но мне лень думать дальше
+            stepOfOrders.Add(new StepOfOrder
+            {
+                isDone = false,
+                Order = order,
+                ProcessId = 7,
+                Proccess = proccesses.FirstOrDefault(p => p.Id == 7),
+            });
+            //Хорошо бы это в метод, но мне лень думать дальше
+            stepOfOrders.Add(new StepOfOrder
+            {
+                isDone = false,
+                Order = order,
+                ProcessId = 8,
+                Proccess = proccesses.FirstOrDefault(p => p.Id == 8),
+            });
+            db.StepOfOrder.AddRange(stepOfOrders);
+            db.Trouble.AddRange(troubles);
+            db.SaveChanges();
+            return Ok(stepOfOrders.ToList().ConvertAll(p => new StepOfOrderModel(p)));
+        }
         private static StepOfOrder CreateShipment(Order order, NomenclatureOfOrder item, NomenclatureOfWarehouse nomenclatureOfWarehouse, decimal count, List<Proccess> proccesses)
         {
             var shipment = new Shipment
