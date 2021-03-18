@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="27cada915e914def8f53061a9302c959" Name="Diagram1" ZoomLevel="131">
+        <EntityTypeShape EntityType="gb_ntibaseModel.Cell" Width="1.5" PointX="5.25" PointY="16.375" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Client" Width="1.5" PointX="0.75" PointY="15.125" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Courier" Width="1.5" PointX="0.75" PointY="18" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Movement" Width="1.5" PointX="5.25" PointY="13.75" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.MovementStorekeeper" Width="1.5" PointX="5.25" PointY="7.125" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Nomenclature" Width="1.5" PointX="5.25" PointY="19.375" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.NomenclatureOfOrder" Width="1.5" PointX="7.5" PointY="19.75" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.NomenclatureOfWarehouse" Width="1.5" PointX="7.5" PointY="16" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Order" Width="1.5" PointX="3" PointY="16.375" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Proccess" Width="1.5" PointX="9.75" PointY="13.125" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Queue" Width="1.5" PointX="5.25" PointY="10.5" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Role" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Shipment" Width="1.5" PointX="9.75" PointY="16.375" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.StepOfOrder" Width="1.5" PointX="12" PointY="14.125" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Storekeeper" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Trouble" Width="1.5" PointX="14.25" PointY="15" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.TypeOfQueue" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.TypeOfTrouble" Width="1.5" PointX="12" PointY="11.25" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.User" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="gb_ntibaseModel.Warehouse" Width="1.5" PointX="3" PointY="11.375" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_Cell_Warehouse" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_NomenclatureOfWarehouse_Cell" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_Courier_Client" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_Order_Client" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_Order_Courier" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_Movement_Warehouse" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_StepOfOrder_Movement" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_MovementStorekeeper_Storekeeper" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_MovementStorekeeper_Warehouse" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_MovementStorekeeper_Warehouse1" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_NomenclatureOfClient_Nomenclature" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_NomenclatureOfWarehouse_Nomenclature" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_NomenclatureOfClient_Order" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_Shipment_NomenclatureOfWarehouse" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_QueueOfWarehouse_Order" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_StepOfOrder_Order" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_StepOfOrder_Proccess" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_QueueOfWarehouse_TypeOfQueue" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_QueueOfWarehouse_Warehouse" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_User_Role" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_StepOfOrder_Shipment" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_Trouble_StepOfOrder" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_User_Storekeeper" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_Warehouse_Storekeeper" />
+        <AssociationConnector Association="gb_ntibaseModel.FK_Trouble_TypeOfTrouble" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
