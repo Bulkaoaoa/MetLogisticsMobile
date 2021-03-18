@@ -129,7 +129,7 @@ namespace FerumAPI.Controllers
             {
                 foreach (var item in nomenclatureOfOrders)
                 {
-                    var list = nomenclatureOfWarehouses.Where(p => p.Nomenclature == item.Nomenclature && p.Count > 0).ToList().OrderBy(p => p.Cell.WarehouseId).ToList();
+                    var list = nomenclatureOfWarehouses.Where(p => p.Nomenclature == item.Nomenclature && p.Count - item.Count >= 0).ToList().OrderBy(p => p.Cell.WarehouseId).ToList();
                     if (list.Count == 0)
                     {
                         troubles.Add(new Trouble
