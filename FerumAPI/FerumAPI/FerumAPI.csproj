@@ -165,6 +165,7 @@
     <Compile Include="Classes\GetHashString.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NomenclaturesController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\StepOfOrdersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
