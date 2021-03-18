@@ -44,16 +44,20 @@ namespace MetallLogistic
                 {
                     try
                     {
-                        //HttpClient client = new HttpClient();
-                        //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                        //var task = client.GetStringAsync($"{AppData.ConectionString}ClientOrCourier/Authorization?login={EntryLogin.Text}" +
-                        //    $"&password={EntryPassword.Text}&isDriver=true").Result;
-                        //var currCourier = JsonConvert.DeserializeObject<Courier>(task);
-                        //AppData.CurrClientId = CurrCourier.Id;
-                        //Вот это дело пока не работает, нужно будет узнать шо там да как
+                        HttpClient client = new HttpClient();
+                        client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                        var task = client.GetStringAsync($"{AppData.ConectionString}ClientOrCourier/Authorization?login={EntryLogin.Text}" +
+                            $"&password={EntryPassword.Text}&isDriver=true").Result;
+                        var currCourier = JsonConvert.DeserializeObject<Courier>(task);
+                        if (currCourier != null)
+                        {
+                            AppData.CurrCourierId = currCourier.Id;
+                            AppData.CurrClientId = currCourier.ClientId;
+                            //Вот это дело пока не работает, нужно будет узнать шо там да как
+                        }
                         Navigation.PushAsync(new Pages.Driver.MainPageDriver());
                     }
-                    catch 
+                    catch
                     {
                         Toast.MakeText(Android.App.Application.Context, "Такого пользователя не существует или у вас проблемы с подключением к интернету", ToastLength.Long).Show();
                     }
@@ -65,10 +69,13 @@ namespace MetallLogistic
                         HttpClient client = new HttpClient();
                         client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                         var task = client.GetStringAsync($"{AppData.ConectionString}ClientOrCourier/Authorization?login={EntryLogin.Text}" +
-                            $"&password={EntryPassword.Text}&isDriver=true").Result;
+                            $"&password={EntryPassword.Text}&isDriver=false").Result;
                         var currClient = JsonConvert.DeserializeObject<Client>(task);
-                        AppData.CurrClientId = currClient.Id;
-                        Navigation.PushAsync(new Pages.Client.MainPageClient());
+                        if (currClient != null)
+                        {
+                            AppData.CurrClientId = currClient.Id;
+                            Navigation.PushAsync(new Pages.Client.MainPageClient());
+                        }
                         //Вот это дело пока не работает, нужно будет узнать шо там да как
                     }
                     catch

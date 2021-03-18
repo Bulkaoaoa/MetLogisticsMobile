@@ -10,8 +10,8 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <Image Source="WeDidntFindAnythig.png"  Margin="16, 8" HorizontalOptions="FillAndExpand"  x:Name="ImgNull"></Image>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" x:Name="ImgNull">
+                <Image Source="WeDidntFindAnythig.png"  Margin="16, 8" HorizontalOptions="FillAndExpand" ></Image>
                 <Label FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="Видимо у вас нет заказов на сегодня :С"></Label>
             </StackLayout>
             <StackLayout HorizontalOptions="FillAndExpand">
@@ -29,7 +29,7 @@
                                     </StackLayout>
                                     <StackLayout Margin="16, 4, 8, 8" Orientation="Horizontal">
                                         <Label VerticalOptions="Center" Text="Время прибытия:" FontAttributes="Bold"></Label>
-                                        <Label VerticalOptions="Center" Text="{Binding DateTimeOfArrival ,StringFormat='{0:MMMM d, yyyy в HH:mm}'}"></Label>
+                                        <Label VerticalOptions="Center" Text="{Binding DateTimeOfArrivle ,StringFormat='{0:d MMMM, yyyy в HH:mm}'}"></Label>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>

@@ -1,4 +1,6 @@
-﻿using MetallLogistic.Classes;
+﻿using Android.Widget;
+using MetallLogistic.Classes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +25,27 @@ namespace MetallLogistic.Pages.Client
 
         private void UpdateLv()
         {
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            var response = client.GetStringAsync($"{AppData.ConectionString}Client/OrdersToDay?id={AppData.CurrClientId}").Result;
-            if (true)
+            try
             {
-                ImgNull.IsVisible = true;
-                LvMyOrdersToday.IsVisible = false;
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetStringAsync($"{AppData.ConectionString}Client/OrdersToDay?id={AppData.CurrClientId}").Result;
+                var listOfOrders = JsonConvert.DeserializeObject<List<Order>>(response);
+                LvMyOrdersToday.ItemsSource = listOfOrders.ToList();
+                if (listOfOrders.Count == 0)
+                {
+                    ImgNull.IsVisible = true;
+                    LvMyOrdersToday.IsVisible = false;
+                }
+                else
+                {
+                    ImgNull.IsVisible = false;
+                    LvMyOrdersToday.IsVisible = true;
+                }
             }
-            else
+            catch
             {
-                ImgNull.IsVisible = false;
-                LvMyOrdersToday.IsVisible = true;
+                Toast.MakeText(Android.App.Application.Context, "Упс... у нас или у вас проблемы с интернет соединением :С", ToastLength.Long);
             }
         }
         private void LvMyOrdersToday_Refreshing(object sender, EventArgs e)

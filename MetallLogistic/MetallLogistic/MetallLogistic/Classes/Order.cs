@@ -11,7 +11,7 @@ namespace MetallLogistic.Classes
         public int ClientId { get; set; }
         public int CourierId { get; set; }
         public decimal Effectivness { get; set; }
-        public DateTime DateTimeOfArrival { get; set; } //Вот это и три поля выше могут быть null
+        public DateTime DateTimeOfArrivle { get; set; } //Вот это и три поля выше могут быть null
 
         public string FullOrderId
         {
