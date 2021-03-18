@@ -22,6 +22,7 @@ namespace FerumAPI.Models
                 Shipment = new ShipmentModel(stepOfOrder.Shipment);
             Trouble = stepOfOrder.Trouble.ToList().ConvertAll(p => new TroubleModel(p, true));
             TimeSpent = stepOfOrder.TimeSpent;
+            Order =  new OrderModel(stepOfOrder.Order);
         }
         [JsonIgnore]
         public int ProcessId { get; set; }
@@ -37,7 +38,6 @@ namespace FerumAPI.Models
         public Nullable<System.DateTime> DateOfStart { get; set; }
         public Nullable<System.DateTime> DateOfEnd { get; set; }
         public MovementModel Movement { get; set; }
-        [JsonIgnore]
         public OrderModel Order { get; set; }
         public ProccessModel Proccess { get; set; }
         public ShipmentModel Shipment { get; set; }

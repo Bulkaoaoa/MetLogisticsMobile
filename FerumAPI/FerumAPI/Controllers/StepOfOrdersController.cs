@@ -36,7 +36,7 @@ namespace FerumAPI.Controllers
             List<StepOfOrder> resultStepOfOrdersList = new List<StepOfOrder>();
             if (stepOfOrderList.FirstOrDefault(p => p.isDone == false).Shipment != null)
             {
-                foreach (var item in stepOfOrderList.Where(p=>p.isDone==false).ToList())
+                foreach (var item in stepOfOrderList.Where(p => p.isDone == false).ToList())
                 {
                     if (item.Shipment == null)
                     {
@@ -49,7 +49,7 @@ namespace FerumAPI.Controllers
             {
                 resultStepOfOrdersList.Add(stepOfOrderList.FirstOrDefault(p => p.isDone == false));
             }
-            return Ok(resultStepOfOrdersList.ConvertAll(p=> new StepOfOrderModel(p)));
+            return Ok(resultStepOfOrdersList.ConvertAll(p => new StepOfOrderModel(p)));
         }
         [ResponseType(typeof(Trouble))]
         [Route("api/Courier/PostTrouble")]
@@ -78,10 +78,36 @@ namespace FerumAPI.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutStepOfOrder(List<StepOfOrder> stepOfOrders)
         {
+            List<StepOfOrder> bufferStepOfOrder = new List<StepOfOrder>();
             foreach (var item in stepOfOrders)
             {
-                item.DateOfEnd = DateTime.UtcNow
+                bufferStepOfOrder.Add(db.StepOfOrder.ToList().FirstOrDefault(p => p.Id == item.Id));
             }
+            foreach (var item in bufferStepOfOrder)
+            {
+                item.DateOfEnd = DateTime.UtcNow.AddHours(3);
+                item.isDone = true;
+                item.TimeSpent = Convert.ToInt32(item.DateOfEnd.Value.TimeOfDay.TotalMinutes - item.DateOfStart.Value.TimeOfDay.TotalMinutes);
+            }
+            db.SaveChanges();
+            List<StepOfOrder> list = db.StepOfOrder.ToList().Where(p => p.Order.Id == stepOfOrders.FirstOrDefault().Order.Id).ToList();
+            if (list.FirstOrDefault(p => p.isDone == false).Shipment != null)
+            {
+                foreach (var item in list.Where(p => p.isDone == false).ToList())
+                {
+                    if (item.Shipment == null)
+                    {
+                        break;
+                    }
+                    item.DateOfStart = DateTime.UtcNow.AddHours(3);
+                }
+            }
+            else
+            {
+                list.FirstOrDefault(p => p.isDone == false).DateOfStart = DateTime.UtcNow.AddHours(3);
+            }
+            db.SaveChanges();
+            return GetStepOfOrder(list[0].Order.Id);
         }
 
         // POST: api/StepOfOrders
@@ -95,7 +121,8 @@ namespace FerumAPI.Controllers
             List<StepOfOrder> stepOfOrders = new List<StepOfOrder>();
             List<Trouble> troubles = new List<Trouble>();
             List<TypeOfTrouble> typeOfTroubles = new List<TypeOfTrouble>();
-            nomenclatureOfOrders = db.Order.ToList().FirstOrDefault(p => p.Id == orderId).NomenclatureOfOrder.ToList();
+            Order order = db.Order.ToList().FirstOrDefault(p => p.Id == orderId);
+            nomenclatureOfOrders = order.NomenclatureOfOrder.ToList();
             nomenclatureOfWarehouses = db.NomenclatureOfWarehouse.ToList();
             nomenclatureOfOrdersNew.AddRange(nomenclatureOfOrders);
             typeOfTroubles = db.TypeOfTrouble.ToList();
@@ -103,7 +130,7 @@ namespace FerumAPI.Controllers
             stepOfOrders.Add(new StepOfOrder
             {
                 isDone = false,
-                OrderId = orderId,
+                Order = order,
                 ProcessId = 1,
                 Proccess = proccesses.FirstOrDefault(p => p.Id == 1),
                 DateOfStart = DateTime.UtcNow.AddHours(3)
@@ -112,7 +139,7 @@ namespace FerumAPI.Controllers
             stepOfOrders.Add(new StepOfOrder
             {
                 isDone = false,
-                OrderId = orderId,
+                Order = order,
                 ProcessId = 2,
                 Proccess = proccesses.FirstOrDefault(p => p.Id == 2),
             });
@@ -136,14 +163,14 @@ namespace FerumAPI.Controllers
                     var nomenclatureOfWarehouse = list.FirstOrDefault(p => p.Count >= item.Count);
                     if (nomenclatureOfWarehouse != null)
                     {
-                        stepOfOrders.Add(CreateShipment(orderId, item, nomenclatureOfWarehouse, item.Count, proccesses));
+                        stepOfOrders.Add(CreateShipment(order, item, nomenclatureOfWarehouse, item.Count, proccesses));
                         list.FirstOrDefault(p => p == nomenclatureOfWarehouse).Count -= item.Count;
                         nomenclatureOfOrdersNew.Remove(item);
                     }
                     else
                     {
                         nomenclatureOfWarehouse = list.FirstOrDefault();
-                        stepOfOrders.Add(CreateShipment(orderId, item, nomenclatureOfWarehouse, nomenclatureOfWarehouse.Count, proccesses));
+                        stepOfOrders.Add(CreateShipment(order, item, nomenclatureOfWarehouse, nomenclatureOfWarehouse.Count, proccesses));
                         list.FirstOrDefault(p => p == nomenclatureOfWarehouse).Count = 0;
                     }
                 }
@@ -165,15 +192,14 @@ namespace FerumAPI.Controllers
                     {
                         isDone = false,
                         Movement = move,
-                        OrderId = orderId,
+                        Order = order,
                         ProcessId = 3,
                         Proccess = proccesses.FirstOrDefault(p => p.Id == 3),
                     });
-                    stepOfOrders.Insert(stepOfOrders.IndexOf(item)+1, new StepOfOrder
+                    stepOfOrders.Insert(stepOfOrders.IndexOf(item), new StepOfOrder
                     {
                         isDone = false,
-                        Movement = move,
-                        OrderId = orderId,
+                        Order = order,
                         ProcessId = 6,
                         Proccess = proccesses.FirstOrDefault(p => p.Id == 6),
                     });
@@ -184,7 +210,7 @@ namespace FerumAPI.Controllers
             stepOfOrders.Add(new StepOfOrder
             {
                 isDone = false,
-                OrderId = orderId,
+                Order = order,
                 ProcessId = 9,
                 Proccess = proccesses.FirstOrDefault(p => p.Id == 9),
             });
@@ -192,7 +218,7 @@ namespace FerumAPI.Controllers
             stepOfOrders.Add(new StepOfOrder
             {
                 isDone = false,
-                OrderId = orderId,
+                Order = order,
                 ProcessId = 7,
                 Proccess = proccesses.FirstOrDefault(p => p.Id == 7),
             });
@@ -200,7 +226,7 @@ namespace FerumAPI.Controllers
             stepOfOrders.Add(new StepOfOrder
             {
                 isDone = false,
-                OrderId = orderId,
+                Order = order,
                 ProcessId = 8,
                 Proccess = proccesses.FirstOrDefault(p => p.Id == 8),
             });
@@ -210,7 +236,7 @@ namespace FerumAPI.Controllers
             return Ok(stepOfOrders.ToList().ConvertAll(p => new StepOfOrderModel(p)));
         }
 
-        private static StepOfOrder CreateShipment(string orderId, NomenclatureOfOrder item, NomenclatureOfWarehouse nomenclatureOfWarehouse, decimal count, List<Proccess> proccesses)
+        private static StepOfOrder CreateShipment(Order order, NomenclatureOfOrder item, NomenclatureOfWarehouse nomenclatureOfWarehouse, decimal count, List<Proccess> proccesses)
         {
             var shipment = new Shipment
             {
@@ -221,7 +247,7 @@ namespace FerumAPI.Controllers
             var step = new StepOfOrder
             {
                 isDone = false,
-                OrderId = orderId,
+                Order = order,
                 ProcessId = 4,
                 Proccess = proccesses.FirstOrDefault(p => p.Id == 4),
                 Shipment = shipment,
