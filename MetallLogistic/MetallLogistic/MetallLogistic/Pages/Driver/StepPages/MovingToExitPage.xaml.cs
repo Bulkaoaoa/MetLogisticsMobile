@@ -23,7 +23,7 @@ namespace MetallLogistic.Pages.Driver.StepPages
 
         private void BtnNext_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Pages.Driver.StepPages.WaitingForExitPage(_currOrder));
         }
 
         private void LabelProblemsTap_Tapped(object sender, EventArgs e)
@@ -33,6 +33,7 @@ namespace MetallLogistic.Pages.Driver.StepPages
 
         private void ImgMapTap_Tapped(object sender, EventArgs e)
         {
+            Navigation.PushAsync(new Pages.Driver.MapPage());
 
         }
     }

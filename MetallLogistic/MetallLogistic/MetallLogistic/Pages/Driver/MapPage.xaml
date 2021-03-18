@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetallLogistic.Pages.Driver.MapPage">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+            <Image Margin="16,0,0,0" HeightRequest="40" VerticalOptions="Center" WidthRequest="40" Source="LogoWhite.png"></Image>
+            <Label Margin="8,0,0,0" TextColor="White" FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="Карта базы"></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <Image Source="Map.png"></Image>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

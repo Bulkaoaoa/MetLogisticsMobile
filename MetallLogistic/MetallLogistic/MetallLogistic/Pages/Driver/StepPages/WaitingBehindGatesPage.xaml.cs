@@ -33,6 +33,7 @@ namespace MetallLogistic.Pages.Driver.StepPages
 
         private void ImgMapTap_Tapped(object sender, EventArgs e)
         {
+            Navigation.PushAsync(new Pages.Driver.MapPage());
 
         }
     }

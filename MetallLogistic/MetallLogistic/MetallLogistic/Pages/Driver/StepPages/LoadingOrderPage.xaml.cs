@@ -23,7 +23,9 @@ namespace MetallLogistic.Pages.Driver.StepPages
 
         private void BtnNext_Clicked(object sender, EventArgs e)
         {
-
+            //Тут должна быть логика на проверку есть ли у нас ещё склад в очереди, 
+            //если да, то перенаправляемся на страницу "Еду на склад", если нет, то на выезд
+            Navigation.PushAsync(new Pages.Driver.StepPages.MovingToExitPage(_currOrder));
         }
 
         private void LabelProblemsTap_Tapped(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace MetallLogistic.Pages.Driver.StepPages
 
         private void ImgMapTap_Tapped(object sender, EventArgs e)
         {
+            Navigation.PushAsync(new Pages.Driver.MapPage());
 
         }
     }
