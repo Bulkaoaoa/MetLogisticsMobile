@@ -9,12 +9,9 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-            <Label Text="Начать заказ" FontSize="Header" FontAttributes="Bold"></Label>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="№" FontSize="Header" FontAttributes="Bold"></Label>
-                <Label Text="{Binding Id}" FontSize="Header" FontAttributes="Bold"></Label> <!--Надо будет тут поменять биндинг-->
-            </StackLayout>
-            <Button x:Name="BtnGo" Clicked="BtnGo_Clicked" Text="Поехали">
+            <Label Margin="16,4" Text="{Binding StartFullOrderId}" FontSize="50" LineBreakMode="WordWrap" FontAttributes="Bold"></Label>
+            <!--<Label Text="{Binding FullOrderId}" LineBreakMode="WordWrap" FontSize="20" FontAttributes="Bold"></Label>-->
+            <Button x:Name="BtnGo" Clicked="BtnGo_Clicked" HorizontalOptions="FillAndExpand" Text="Поехали">
             </Button>
         </StackLayout>
     </ContentPage.Content>

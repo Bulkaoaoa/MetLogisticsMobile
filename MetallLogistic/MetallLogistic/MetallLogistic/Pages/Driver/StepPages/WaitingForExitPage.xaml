@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MetallLogistic.Pages.Driver.StepPages.WaitingBehindGatesPage"  NavigationPage.HasNavigationBar="False">
+             x:Class="MetallLogistic.Pages.Driver.StepPages.WaitingForExitPage" NavigationPage.HasNavigationBar="False">
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
             <Image Margin="16,0,0,0" HeightRequest="40" VerticalOptions="Center" WidthRequest="40" Source="LogoWhite.png"></Image>
@@ -10,8 +10,8 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
             <Label Text="{Binding FullOrderId}" FontAttributes="Bold" HorizontalTextAlignment="Start" Margin="16,0,16,0" LineBreakMode="WordWrap" FontSize="50"></Label>
-            <Label Text="Жду за воротами..." FontAttributes="None" HorizontalTextAlignment="Start" Margin="16,0,16,-20" LineBreakMode="WordWrap" FontSize="30"></Label>
-            <Image Source="WaitingBehindGates.png" HeightRequest="350"></Image>
+            <Label Text="Жду выезд..." FontAttributes="None" HorizontalTextAlignment="Start" Margin="16,0,16,-20" LineBreakMode="WordWrap" FontSize="30"></Label>
+            <Image Source="WaitingForExit.png" HeightRequest="350"></Image>
             <Button Text="Дальше" x:Name="BtnNext" Margin="16,-30,16,0" Clicked="BtnNext_Clicked"></Button>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="У нас возникла проблема..." FontSize="14" FontAttributes="Bold" TextDecorations="Underline">

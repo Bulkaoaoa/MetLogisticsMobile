@@ -15,7 +15,7 @@
                     <Entry x:Name="EntrySearch" TextChanged="EntrySearch_TextChanged" HorizontalOptions="FillAndExpand"></Entry>
         <ScrollView>
                     <ListView x:Name="LvNomenclatures" HasUnevenRows="True" IsPullToRefreshEnabled="True" Refreshing="LvNomenclatures_Refreshing"
-                              SeparatorVisibility="None">
+                              SeparatorVisibility="Default" SeparatorColor="{StaticResource MainBlue}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -37,8 +37,6 @@
                                                 <Label VerticalOptions="Center" FontAttributes="Bold" Text="Название:"></Label>
                                                 <Label VerticalOptions="Center" Text="{Binding Name}"></Label>
                                             </StackLayout>
-                                            <Rectangle Grid.ColumnSpan="2" VerticalOptions="End" HeightRequest="1" HorizontalOptions="FillAndExpand" 
-                                                       Fill="#2958E5"></Rectangle>
                                             <Entry Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" 
                                                    Text="1" x:Name="CurrCount"></Entry>
                                         </Grid>

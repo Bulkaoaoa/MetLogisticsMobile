@@ -1,5 +1,4 @@
-﻿using MetallLogistic.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,19 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace MetallLogistic.Pages.Driver.StepPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WaitingBehindGatesPage : ContentPage
+    public partial class WaitingForLodingPage : ContentPage
     {
-        Order _currOrder;
-        public WaitingBehindGatesPage(Order currOrder)
+        public WaitingForLodingPage()
         {
             InitializeComponent();
-            this.BindingContext = currOrder;
-            _currOrder = currOrder;
         }
 
         private void BtnNext_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Pages.Driver.StepPages.DrivingThorughGatesPage(_currOrder));
+
         }
 
         private void LabelProblemsTap_Tapped(object sender, EventArgs e)

@@ -4,7 +4,28 @@ using System.Text;
 
 namespace MetallLogistic.Classes
 {
-    class Order
+    public class Order
     {
+        public string Id { get; set; }
+        public DateTime DateOfCreate { get; set; }
+        public int ClientId { get; set; }
+        public int CourierId { get; set; }
+        public decimal Effectivness { get; set; }
+        public DateTime DateTimeOfArrival { get; set; } //Вот это и три поля выше могут быть null
+
+        public string FullOrderId
+        {
+            get
+            {
+                return $"Заказ №{Id}";
+            }
+        }
+        public string StartFullOrderId
+        {
+            get
+            {
+                return $"Начать заказ №{Id}";
+            }
+        }
     }
 }

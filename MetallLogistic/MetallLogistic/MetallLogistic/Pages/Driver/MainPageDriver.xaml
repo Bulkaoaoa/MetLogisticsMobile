@@ -9,30 +9,29 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid>
-            <Entry x:Name="EntrySearch" TextChanged="EntrySearch_TextChanged"></Entry>
+        <StackLayout>
+            <Entry x:Name="EntrySearch" Placeholder="Поиск..." TextChanged="EntrySearch_TextChanged"></Entry>
             <ScrollView>
-                <ListView x:Name="LVMyOrders" HasUnevenRows="True" ItemTapped="LVMyOrders_ItemTapped" IsPullToRefreshEnabled="True" Refreshing="LVMyOrders_Refreshing" 
-                      SeparatorVisibility="None">
+                <ListView RefreshControlColor="{StaticResource MainBlue}" x:Name="LVMyOrders" HasUnevenRows="True" ItemTapped="LVMyOrders_ItemTapped" IsPullToRefreshEnabled="True" Refreshing="LVMyOrders_Refreshing" 
+                      SeparatorVisibility="Default" SeparatorColor="{StaticResource MainBlue}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout HorizontalOptions="Start">
-                                    <StackLayout Margin="16, 8, 8, 8" Orientation="Horizontal">
-                                        <Label VerticalOptions="Center" Text="Заказ №" FontAttributes="Bold"></Label>
-                                        <Label VerticalOptions="Center" Text="{Binding Id}"></Label>
+                                    <StackLayout Margin="16,8,8,0" Orientation="Horizontal">
+                                        <Label Margin="0" VerticalOptions="Center" Text="Заказ №" FontAttributes="Bold"></Label>
+                                        <Label Margin="0" VerticalOptions="Center" Text="{Binding Id}"></Label>
                                     </StackLayout>
-                                    <StackLayout Margin="16, 8, 8, 8" Orientation="Horizontal">
-                                        <Label VerticalOptions="Center" Text="Время прибытия:" FontAttributes="Bold"></Label>
-                                        <Label VerticalOptions="Center" Text="{Binding DateTimeOfArrival ,StringFormat='{0:MMMM d, yyyy в HH:mm}'}"></Label>
+                                    <StackLayout Margin="16,0,16,16" Orientation="Horizontal">
+                                        <Label Margin="0" VerticalOptions="Center" Text="Время прибытия:" FontAttributes="Bold"></Label>
+                                        <Label Margin="0" VerticalOptions="Center" Text="{Binding DateTimeOfArrival ,StringFormat='{0:MMMM d, yyyy в HH:mm}'}"></Label>
                                     </StackLayout>
-                                    <Rectangle VerticalOptions="End" HeightRequest="1" HorizontalOptions="FillAndExpand" Fill="#2958E5"></Rectangle>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-        </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -17,7 +17,7 @@
             <StackLayout HorizontalOptions="FillAndExpand">
                 <Entry Placeholder="Поиск..." x:Name="EntrySearch" TextChanged="EntrySearch_TextChanged"></Entry>
                 <ListView x:Name="LvMyOrdersToday" HasUnevenRows="True" IsPullToRefreshEnabled="True" Refreshing="LvMyOrdersToday_Refreshing" 
-                      SeparatorVisibility="None">
+                      SeparatorVisibility="Default" SeparatorColor="{StaticResource MainBlue}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -25,12 +25,12 @@
                                     <StackLayout Margin="16, 8, 8, 8" Orientation="Horizontal">
                                         <Label VerticalOptions="Center" Text="Заказ №" FontAttributes="Bold"></Label>
                                         <Label VerticalOptions="Center" Text="{Binding Id}"></Label>
+                                        <!--НАМ НУЖЕН СТАТУС ЗАКАЗОООООВ-->
                                     </StackLayout>
                                     <StackLayout Margin="16, 8, 8, 8" Orientation="Horizontal">
                                         <Label VerticalOptions="Center" Text="Время прибытия:" FontAttributes="Bold"></Label>
                                         <Label VerticalOptions="Center" Text="{Binding DateTimeOfArrival ,StringFormat='{0:MMMM d, yyyy в HH:mm}'}"></Label>
                                     </StackLayout>
-                                    <Rectangle VerticalOptions="End" HeightRequest="1" HorizontalOptions="FillAndExpand" Fill="#2958E5"></Rectangle>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

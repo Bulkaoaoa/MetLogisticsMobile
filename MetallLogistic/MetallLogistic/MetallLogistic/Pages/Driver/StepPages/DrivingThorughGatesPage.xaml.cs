@@ -11,10 +11,10 @@ using Xamarin.Forms.Xaml;
 namespace MetallLogistic.Pages.Driver.StepPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WaitingBehindGatesPage : ContentPage
+    public partial class DrivingThorughGatesPage : ContentPage
     {
         Order _currOrder;
-        public WaitingBehindGatesPage(Order currOrder)
+        public DrivingThorughGatesPage(Order currOrder)
         {
             InitializeComponent();
             this.BindingContext = currOrder;
@@ -23,7 +23,7 @@ namespace MetallLogistic.Pages.Driver.StepPages
 
         private void BtnNext_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Pages.Driver.StepPages.DrivingThorughGatesPage(_currOrder));
+            Navigation.PushAsync(new Pages.Driver.StepPages.MovingToWareHousePage(_currOrder));
         }
 
         private void LabelProblemsTap_Tapped(object sender, EventArgs e)

@@ -8,22 +8,32 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MetallLogistic.Pages.Driver
+namespace MetallLogistic.Pages.Driver.StepPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StartOrderPage : ContentPage
+    public partial class WaitingForExitPage : ContentPage
     {
         Order _currOrder;
-        public StartOrderPage(Order currOrder)
+        public WaitingForExitPage(Order currOrder)
         {
             InitializeComponent();
             this.BindingContext = currOrder;
             _currOrder = currOrder;
         }
 
-        private void BtnGo_Clicked(object sender, EventArgs e)
+        private void BtnNext_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Pages.Driver.StepPages.WaitingBehindGatesPage(_currOrder));
+
+        }
+
+        private void LabelProblemsTap_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ImgMapTap_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

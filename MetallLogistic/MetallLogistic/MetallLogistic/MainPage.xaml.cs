@@ -30,7 +30,7 @@ namespace MetallLogistic
 
         private void BtnLogin_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Pages.Client.MainPageClient());
+            Navigation.PushAsync(new Pages.Driver.MainPageDriver());
         }
     }
 }
