@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MetallLogistic.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +18,14 @@ namespace MetallLogistic.Pages.Client
         {
             InitializeComponent();
             //Логика если лист пустой, то мы показываем картинку
+            UpdateLv();
+        }
+
+        private void UpdateLv()
+        {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            var response = client.GetStringAsync($"{AppData.ConectionString}Client/OrdersToDay?id={AppData.CurrClientId}").Result;
             if (true)
             {
                 ImgNull.IsVisible = true;
@@ -27,8 +37,6 @@ namespace MetallLogistic.Pages.Client
                 LvMyOrdersToday.IsVisible = true;
             }
         }
-
-
         private void LvMyOrdersToday_Refreshing(object sender, EventArgs e)
         {
 

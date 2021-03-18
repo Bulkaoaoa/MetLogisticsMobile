@@ -22,12 +22,12 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout HorizontalOptions="Start">
-                                    <StackLayout Margin="16, 8, 8, 8" Orientation="Horizontal">
+                                    <StackLayout Margin="16, 8, 8, 0" Orientation="Horizontal">
                                         <Label VerticalOptions="Center" Text="Заказ №" FontAttributes="Bold"></Label>
                                         <Label VerticalOptions="Center" Text="{Binding Id}"></Label>
                                         <!--НАМ НУЖЕН СТАТУС ЗАКАЗОООООВ-->
                                     </StackLayout>
-                                    <StackLayout Margin="16, 8, 8, 8" Orientation="Horizontal">
+                                    <StackLayout Margin="16, 4, 8, 8" Orientation="Horizontal">
                                         <Label VerticalOptions="Center" Text="Время прибытия:" FontAttributes="Bold"></Label>
                                         <Label VerticalOptions="Center" Text="{Binding DateTimeOfArrival ,StringFormat='{0:MMMM d, yyyy в HH:mm}'}"></Label>
                                     </StackLayout>

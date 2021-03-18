@@ -29,11 +29,20 @@ namespace MetallLogistic.Pages
 
             if (errors.Length == 0)
             {
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                var newClient = client.PostAsync($"{AppData.ConectionString}Clients?login={EntryLogin.Text}&password=" +
-                    $"{EntryPassword.Text}&companyName={EntryCompanyName.Text}", null); //Будет работать?
-                
+                try
+                {
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                    var newClient = client.PostAsync($"{AppData.ConectionString}Clients?login={EntryLogin.Text}&password=" +
+                        $"{EntryPassword.Text}&companyName={EntryCompanyName.Text}", null); //Будет работать?
+                    Navigation.PopAsync();
+                }
+                catch 
+                {
+                    Toast.MakeText(Android.App.Application.Context, "У нас случилась ошибка, возможно такой логин или название компании уже существуют", ToastLength.Long).Show();
+
+                }
+
             }
             else
                 Toast.MakeText(Android.App.Application.Context, errors, ToastLength.Long).Show();

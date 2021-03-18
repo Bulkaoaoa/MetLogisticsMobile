@@ -44,13 +44,14 @@ namespace MetallLogistic
                 {
                     try
                     {
-                        HttpClient client = new HttpClient();
-                        client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                        var task = client.GetStringAsync($"{AppData.ConectionString}ClientOrCourier/Authorization?login={EntryLogin.Text}" +
-                            $"&password={EntryPassword.Text}&isDriver=true").Result;
-                        var currCourier = JsonConvert.DeserializeObject<Courier>(task);
+                        //HttpClient client = new HttpClient();
+                        //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                        //var task = client.GetStringAsync($"{AppData.ConectionString}ClientOrCourier/Authorization?login={EntryLogin.Text}" +
+                        //    $"&password={EntryPassword.Text}&isDriver=true").Result;
+                        //var currCourier = JsonConvert.DeserializeObject<Courier>(task);
                         //AppData.CurrClientId = CurrCourier.Id;
                         //Вот это дело пока не работает, нужно будет узнать шо там да как
+                        Navigation.PushAsync(new Pages.Driver.MainPageDriver());
                     }
                     catch 
                     {
@@ -78,7 +79,7 @@ namespace MetallLogistic
             }
             else
                 Toast.MakeText(Android.App.Application.Context, errors, ToastLength.Long).Show();
-            Navigation.PushAsync(new Pages.Driver.MainPageDriver());
+            //Navigation.PushAsync(new Pages.Driver.MainPageDriver());
         }
     }
 }
