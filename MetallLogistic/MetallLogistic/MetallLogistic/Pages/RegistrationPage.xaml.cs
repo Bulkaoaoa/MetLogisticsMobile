@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using MetallLogistic.Classes;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -22,15 +24,16 @@ namespace MetallLogistic.Pages
         {
             var errors = "";
             if (string.IsNullOrWhiteSpace(EntryLogin.Text)) errors += "Вы не ввели логин\r\n";
-            //Сделать проверку существует ли такой логин уже
             if (string.IsNullOrWhiteSpace(EntryPassword.Text)) errors += "Вы не ввели пароль\r\n";
             if (string.IsNullOrWhiteSpace(EntryCompanyName.Text)) errors += "Вы не ввели название компании\r\n";
-            //Сделать проверку существует ли такое название компании
 
             if (errors.Length == 0)
             {
-                //Регистрация юзера
-                //Переход назад(На авторизацию)
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                var newClient = client.PostAsync($"{AppData.ConectionString}Clients?login={EntryLogin.Text}&password=" +
+                    $"{EntryPassword.Text}&companyName={EntryCompanyName.Text}", null); //Будет работать?
+                
             }
             else
                 Toast.MakeText(Android.App.Application.Context, errors, ToastLength.Long).Show();

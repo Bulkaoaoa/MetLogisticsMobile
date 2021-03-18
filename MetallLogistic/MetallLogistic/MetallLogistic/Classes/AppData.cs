@@ -8,5 +8,8 @@ namespace MetallLogistic.Classes
     {
         //Лист для списка заказа
         //public static List<Order> currOrder = new List<Order>();
+        public static string CurrClientId = "";
+        public static string ConectionString = "http://ferumapi.somee.com/api/";
+
     }
 }

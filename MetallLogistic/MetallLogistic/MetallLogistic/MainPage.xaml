@@ -9,7 +9,7 @@
             <Image HeightRequest="70" Source="Logo.png" Margin="0, 0, 0, 30"></Image>
             <Entry Placeholder="Логин" x:Name="EntryLogin" HorizontalOptions="FillAndExpand"></Entry>
             <Entry Placeholder="Пароль" IsPassword="True" HorizontalOptions="FillAndExpand" x:Name="EntryPassword"></Entry>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
                 <Switch Margin="2,8" x:Name="SwitchIsDriver"></Switch>
                 <Label Margin="2, 8" Text="Вы водитель?">
                     <Label.GestureRecognizers>
