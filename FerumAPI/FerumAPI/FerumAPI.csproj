@@ -169,6 +169,7 @@
     <Compile Include="Controllers\NomenclaturesController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\StepOfOrdersController.cs" />
+    <Compile Include="Controllers\TroublesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Entities\Cell.cs">

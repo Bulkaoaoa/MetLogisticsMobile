@@ -13,6 +13,7 @@ namespace FerumAPI.Models
         {
             Id = typeOfTrouble.Id;
             Name = typeOfTrouble.Name;
+            
         }
         public int Id { get; set; }
         public string Name { get; set; }

@@ -9,7 +9,7 @@ namespace FerumAPI.Models
 {
     public class TroubleModel
     {
-        public TroubleModel(Trouble trouble, bool viewTypeTrouble)
+        public TroubleModel(Trouble trouble)
         {
             Id = trouble.Id;
             Description = trouble.Description;
@@ -18,7 +18,8 @@ namespace FerumAPI.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public int ProccesId { get; set; }
-
+        [JsonIgnore]
+        public  StepOfOrderModel StepOfOrder { get; set; }
         public virtual TypeOfTroubleModel TypeOfTrouble { get; set; }
     }
 }

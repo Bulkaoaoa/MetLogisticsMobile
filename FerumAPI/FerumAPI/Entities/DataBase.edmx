@@ -137,9 +137,9 @@
         </EntityType>
         <EntityType Name="Storekeeper">
           <Key>
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Effectiveness" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -234,7 +234,7 @@
           <End Role="MovementStorekeeper" Type="Self.MovementStorekeeper" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Storekeeper">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="MovementStorekeeper">
               <PropertyRef Name="StorekeeperId" />
@@ -433,6 +433,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Storekeeper_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Storekeeper" Type="Self.Storekeeper" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Storekeeper">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Trouble_StepOfOrder">
           <End Role="StepOfOrder" Type="Self.StepOfOrder" Multiplicity="1" />
           <End Role="Trouble" Type="Self.Trouble" Multiplicity="*" />
@@ -469,24 +481,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Storekeeper">
-          <End Role="Storekeeper" Type="Self.Storekeeper" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Storekeeper">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Warehouse_Storekeeper">
+        <Association Name="FK_Warehouse_Storekeeper1">
           <End Role="Storekeeper" Type="Self.Storekeeper" Multiplicity="0..1" />
           <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Storekeeper">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Warehouse">
               <PropertyRef Name="StorekeeperId" />
@@ -595,6 +595,10 @@
             <End Role="Shipment" EntitySet="Shipment" />
             <End Role="StepOfOrder" EntitySet="StepOfOrder" />
           </AssociationSet>
+          <AssociationSet Name="FK_Storekeeper_User" Association="Self.FK_Storekeeper_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Storekeeper" EntitySet="Storekeeper" />
+          </AssociationSet>
           <AssociationSet Name="FK_Trouble_StepOfOrder" Association="Self.FK_Trouble_StepOfOrder">
             <End Role="StepOfOrder" EntitySet="StepOfOrder" />
             <End Role="Trouble" EntitySet="Trouble" />
@@ -607,11 +611,7 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Storekeeper" Association="Self.FK_User_Storekeeper">
-            <End Role="Storekeeper" EntitySet="Storekeeper" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Warehouse_Storekeeper" Association="Self.FK_Warehouse_Storekeeper">
+          <AssociationSet Name="FK_Warehouse_Storekeeper1" Association="Self.FK_Warehouse_Storekeeper1">
             <End Role="Storekeeper" EntitySet="Storekeeper" />
             <End Role="Warehouse" EntitySet="Warehouse" />
           </AssociationSet>
@@ -730,11 +730,11 @@
             <End Role="StepOfOrder" EntitySet="StepOfOrder" />
             <End Role="Trouble" EntitySet="Trouble" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Storekeeper" Association="gb_ntibaseModel.FK_User_Storekeeper">
-            <End Role="Storekeeper" EntitySet="Storekeeper" />
+          <AssociationSet Name="FK_Storekeeper_User" Association="gb_ntibaseModel.FK_Storekeeper_User">
             <End Role="User" EntitySet="User" />
+            <End Role="Storekeeper" EntitySet="Storekeeper" />
           </AssociationSet>
-          <AssociationSet Name="FK_Warehouse_Storekeeper" Association="gb_ntibaseModel.FK_Warehouse_Storekeeper">
+          <AssociationSet Name="FK_Warehouse_Storekeeper1" Association="gb_ntibaseModel.FK_Warehouse_Storekeeper1">
             <End Role="Storekeeper" EntitySet="Storekeeper" />
             <End Role="Warehouse" EntitySet="Warehouse" />
           </AssociationSet>
@@ -910,13 +910,13 @@
         </EntityType>
         <EntityType Name="Storekeeper">
           <Key>
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Effectiveness" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="MovementStorekeeper" Relationship="gb_ntibaseModel.FK_MovementStorekeeper_Storekeeper" FromRole="Storekeeper" ToRole="MovementStorekeeper" />
-          <NavigationProperty Name="User" Relationship="gb_ntibaseModel.FK_User_Storekeeper" FromRole="Storekeeper" ToRole="User" />
-          <NavigationProperty Name="Warehouse" Relationship="gb_ntibaseModel.FK_Warehouse_Storekeeper" FromRole="Storekeeper" ToRole="Warehouse" />
+          <NavigationProperty Name="User" Relationship="gb_ntibaseModel.FK_Storekeeper_User" FromRole="Storekeeper" ToRole="User" />
+          <NavigationProperty Name="Warehouse" Relationship="gb_ntibaseModel.FK_Warehouse_Storekeeper1" FromRole="Storekeeper" ToRole="Warehouse" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -965,7 +965,7 @@
           <Property Name="Login" Type="Guid" Nullable="false" />
           <Property Name="Password" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Role" Relationship="gb_ntibaseModel.FK_User_Role" FromRole="User" ToRole="Role" />
-          <NavigationProperty Name="Storekeeper" Relationship="gb_ntibaseModel.FK_User_Storekeeper" FromRole="User" ToRole="Storekeeper" />
+          <NavigationProperty Name="Storekeeper" Relationship="gb_ntibaseModel.FK_Storekeeper_User" FromRole="User" ToRole="Storekeeper" />
         </EntityType>
         <EntityType Name="Warehouse">
           <Key>
@@ -979,7 +979,7 @@
           <NavigationProperty Name="MovementStorekeeper" Relationship="gb_ntibaseModel.FK_MovementStorekeeper_Warehouse" FromRole="Warehouse" ToRole="MovementStorekeeper" />
           <NavigationProperty Name="MovementStorekeeper1" Relationship="gb_ntibaseModel.FK_MovementStorekeeper_Warehouse1" FromRole="Warehouse" ToRole="MovementStorekeeper" />
           <NavigationProperty Name="Queue" Relationship="gb_ntibaseModel.FK_QueueOfWarehouse_Warehouse" FromRole="Warehouse" ToRole="Queue" />
-          <NavigationProperty Name="Storekeeper" Relationship="gb_ntibaseModel.FK_Warehouse_Storekeeper" FromRole="Warehouse" ToRole="Storekeeper" />
+          <NavigationProperty Name="Storekeeper" Relationship="gb_ntibaseModel.FK_Warehouse_Storekeeper1" FromRole="Warehouse" ToRole="Storekeeper" />
         </EntityType>
         <Association Name="FK_Cell_Warehouse">
           <End Type="gb_ntibaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
@@ -1070,7 +1070,7 @@
           <End Type="gb_ntibaseModel.MovementStorekeeper" Role="MovementStorekeeper" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Storekeeper">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="MovementStorekeeper">
               <PropertyRef Name="StorekeeperId" />
@@ -1245,24 +1245,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Storekeeper">
-          <End Type="gb_ntibaseModel.Storekeeper" Role="Storekeeper" Multiplicity="1" />
-          <End Type="gb_ntibaseModel.User" Role="User" Multiplicity="0..1" />
+        <Association Name="FK_Storekeeper_User">
+          <End Type="gb_ntibaseModel.User" Role="User" Multiplicity="1" />
+          <End Type="gb_ntibaseModel.Storekeeper" Role="Storekeeper" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Storekeeper">
-              <PropertyRef Name="UserId" />
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="User">
+            <Dependent Role="Storekeeper">
               <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Warehouse_Storekeeper">
+        <Association Name="FK_Warehouse_Storekeeper1">
           <End Type="gb_ntibaseModel.Storekeeper" Role="Storekeeper" Multiplicity="0..1" />
           <End Type="gb_ntibaseModel.Warehouse" Role="Warehouse" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Storekeeper">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Warehouse">
               <PropertyRef Name="StorekeeperId" />
@@ -1434,7 +1434,7 @@
             <EntityTypeMapping TypeName="gb_ntibaseModel.Storekeeper">
               <MappingFragment StoreEntitySet="Storekeeper">
                 <ScalarProperty Name="Effectiveness" ColumnName="Effectiveness" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

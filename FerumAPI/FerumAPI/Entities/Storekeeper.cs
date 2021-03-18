@@ -21,7 +21,7 @@ namespace FerumAPI.Entities
             this.Warehouse = new HashSet<Warehouse>();
         }
     
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public Nullable<decimal> Effectiveness { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

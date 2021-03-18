@@ -20,7 +20,7 @@ namespace FerumAPI.Models
                 Movement = new MovementModel(stepOfOrder.Movement);
             if (stepOfOrder.Shipment != null)
                 Shipment = new ShipmentModel(stepOfOrder.Shipment);
-            Trouble = stepOfOrder.Trouble.ToList().ConvertAll(p => new TroubleModel(p, true));
+            Trouble = stepOfOrder.Trouble.ToList().ConvertAll(p => new TroubleModel(p));
             TimeSpent = stepOfOrder.TimeSpent;
             Order =  new OrderModel(stepOfOrder.Order);
         }

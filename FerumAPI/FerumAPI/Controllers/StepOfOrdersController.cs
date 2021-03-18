@@ -87,10 +87,14 @@ namespace FerumAPI.Controllers
             {
                 item.DateOfEnd = DateTime.UtcNow.AddHours(3);
                 item.isDone = true;
-                item.TimeSpent = Convert.ToInt32(item.DateOfEnd.Value.TimeOfDay.TotalMinutes - item.DateOfStart.Value.TimeOfDay.TotalMinutes);
+                item.TimeSpent = Convert.ToInt32((item.DateOfEnd.Value - item.DateOfStart.Value).TotalMinutes);
             }
             db.SaveChanges();
             List<StepOfOrder> list = db.StepOfOrder.ToList().Where(p => p.Order.Id == stepOfOrders.FirstOrDefault().Order.Id).ToList();
+            if (list.Where(p => p.isDone == false).ToList().Count == 0)
+            {
+                return NotFound();
+            }
             if (list.FirstOrDefault(p => p.isDone == false).Shipment != null)
             {
                 foreach (var item in list.Where(p => p.isDone == false).ToList())
