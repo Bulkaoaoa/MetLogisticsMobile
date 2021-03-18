@@ -25,6 +25,12 @@ namespace MetallLogistic.Pages.Driver
             GetStep();
         }
 
+        public async void GenreateThings()
+        {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            var listOfSteOfOrders = client.PostAsync($"{AppData.ConectionString}StepOfOrders?orderId={_currOrder.Id}", null);
+        }
         public void GetStep()
         {
             try
@@ -37,7 +43,7 @@ namespace MetallLogistic.Pages.Driver
             }
             catch
             {
-                Toast.MakeText(Android.App.Application.Context, "Упс... у нас или у вас проблемы с интернет соединением :С", ToastLength.Long);
+                Toast.MakeText(Android.App.Application.Context, "Упс... у нас или у вас проблемы с интернет соединением :С", ToastLength.Long).Show();
             }
         }
 
@@ -55,14 +61,14 @@ namespace MetallLogistic.Pages.Driver
             catch
             {
                 GetStep();
-                Toast.MakeText(Android.App.Application.Context, "Упс... у нас или у вас проблемы с интернет соединением :С", ToastLength.Long);
+                Toast.MakeText(Android.App.Application.Context, "Упс... у нас или у вас проблемы с интернет соединением :С", ToastLength.Long).Show();
             }
         }
         private void BtnNext_Clicked(object sender, EventArgs e)
         {
-            if (_lastStep.Count == 0)
-                Navigation.PopAsync();
-            else
+            //if (_lastStep.Count == 0)
+            //    //Navigation.PopAsync();
+            //else
                 PutStep();
         }
 

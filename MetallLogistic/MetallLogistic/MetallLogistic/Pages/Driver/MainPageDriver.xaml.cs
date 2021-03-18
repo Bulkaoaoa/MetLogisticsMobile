@@ -53,7 +53,7 @@ namespace MetallLogistic.Pages.Driver
             }
             catch 
             {
-                Toast.MakeText(Android.App.Application.Context, "Упс... у нас или у вас проблемы с интернет соединением :С", ToastLength.Long);
+                Toast.MakeText(Android.App.Application.Context, "Упс... у нас или у вас проблемы с интернет соединением :С", ToastLength.Long).Show();
             }
         }
         private void EntrySearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -71,6 +71,7 @@ namespace MetallLogistic.Pages.Driver
         private void LVMyOrders_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Navigation.PushAsync(new Pages.Driver.StartOrderPage(LVMyOrders.SelectedItem as Order)); //Упадет же, говнище ебаное
+            //Navigation.PushAsync(new Pages.Driver.StepPage(LVMyOrders.SelectedItem as Order));
         }
     }
 }

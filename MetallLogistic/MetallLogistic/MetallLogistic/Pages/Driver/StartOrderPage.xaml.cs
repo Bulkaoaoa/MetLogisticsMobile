@@ -23,21 +23,21 @@ namespace MetallLogistic.Pages.Driver
             _currOrder = currOrder;
         }
 
-        private async void BtnGo_Clicked(object sender, EventArgs e)
+        private void BtnGo_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            //try
+            //{
+            //BtnGo.IsEnabled = false;
+            //HttpClient client = new HttpClient();
+            //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-                var listOfSteOfOrders = await client.PostAsync($"{AppData.ConectionString}StepOfOrders?orderId={_currOrder.Id}", null);
-                BtnGo.IsEnabled = false;
-                Navigation.PushAsync(new Pages.Driver.StepPage(_currOrder));
-            }
-            catch 
-            {
-                Toast.MakeText(Android.App.Application.Context, "Упс... у нас или у вас проблемы с интернет соединением :С", ToastLength.Long);
-            }
+            //var bff = client.GetStringAsync($"{AppData.ConectionString}Courier/GetNewStep?orderId={_currOrder.Id}").Result;
+            Navigation.PushAsync(new Pages.Driver.StepPages.WaitingBehindGatesPage(_currOrder));
+            //}
+            //catch 
+            //{
+            //    Toast.MakeText(Android.App.Application.Context, "Упс... у нас или у вас проблемы с интернет соединением :С", ToastLength.Long).Show();
+            //}
         }
     }
 }
