@@ -9,16 +9,13 @@ namespace FerumAPI.Models
 {
     public class ClientModel
     {
-        public ClientModel(Client client, bool viewListOrder, bool viewCourier)
+        public ClientModel(Client client)
         {
             Id = client.Id;
             Name = client.Name;
             Login = client.Login;
             Password = client.Password;
-            if (viewCourier)
-                Courier = client.Courier.ToList().ConvertAll(p => new CourierModel(p));
-            if (viewListOrder)
-                Order = client.Order.ToList().ConvertAll(p => new OrderModel(p, false, true));
+            //Courier = client.Courier.ToList().ConvertAll(p => new CourierModel(p));
         }
         public string Id { get; set; }
         public string Name { get; set; }
@@ -26,8 +23,8 @@ namespace FerumAPI.Models
         public Nullable<System.Guid> Password { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
-        public List<CourierModel> Courier { get; set; }
+        //[JsonIgnore]
+        //public List<CourierModel> Courier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
         public List<OrderModel> Order { get; set; }

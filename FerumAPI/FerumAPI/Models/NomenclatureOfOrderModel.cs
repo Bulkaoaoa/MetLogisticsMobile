@@ -9,11 +9,9 @@ namespace FerumAPI.Models
 {
     public class NomenclatureOfOrderModel
     {
-        public NomenclatureOfOrderModel(NomenclatureOfOrder nomenclatureOfOrder, bool viewOrder)
+        public NomenclatureOfOrderModel(NomenclatureOfOrder nomenclatureOfOrder)
         {
-            Nomenclature = new NomenclatureModel(nomenclatureOfOrder.Nomenclature, false, true);
-            if (viewOrder)
-                Order = new OrderModel(nomenclatureOfOrder.Order, false, false);
+            Nomenclature = new NomenclatureModel(nomenclatureOfOrder.Nomenclature);
             Count = nomenclatureOfOrder.Count;
         }
         [JsonIgnore]
@@ -23,7 +21,7 @@ namespace FerumAPI.Models
         public decimal Count { get; set; }
 
         public NomenclatureModel Nomenclature { get; set; }
-        [JsonIgnore]
-        public virtual OrderModel Order { get; set; }
+        //[JsonIgnore]
+        //public virtual OrderModel Order { get; set; }
     }
 }

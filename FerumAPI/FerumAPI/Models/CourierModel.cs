@@ -18,8 +18,8 @@ namespace FerumAPI.Models
                 FIO = courier.FIO;
                 CarNumber = courier.CarNumber;
                 Password = courier.Password;
-                Client = new ClientModel(courier.Client, false, false);
-                Order = courier.Order.ToList().ConvertAll(p => new OrderModel(p, false, true)).ToList();
+                Client = new ClientModel(courier.Client);
+                Order = courier.Order.ToList().ConvertAll(p => new OrderModel(p)).ToList();
             }
         }
 

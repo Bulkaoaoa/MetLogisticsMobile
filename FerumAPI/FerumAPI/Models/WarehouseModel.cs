@@ -9,12 +9,10 @@ namespace FerumAPI.Models
 {
     public class WarehouseModel
     {
-        public WarehouseModel(Warehouse warehouse, bool viewCell)
+        public WarehouseModel(Warehouse warehouse)
         {
             Id = warehouse.Id;
             Name = warehouse.Name;
-            if (viewCell)
-                Cell = warehouse.Cell.ToList().ConvertAll(p => new CellModel(p, true, false));
         }
 
         public int Id { get; set; }
@@ -23,12 +21,12 @@ namespace FerumAPI.Models
         public Nullable<int> StorekeeperId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual List<CellModel> Cell { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual List<MovementStorekeeper> MovementStorekeeper { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual List<MovementStorekeeper> MovementStorekeeper1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual List<CellModel> Cell { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual List<MovementStorekeeper> MovementStorekeeper { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual List<MovementStorekeeper> MovementStorekeeper1 { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
         public virtual List<Queue> Queue { get; set; }
         public virtual Storekeeper Storekeeper { get; set; }

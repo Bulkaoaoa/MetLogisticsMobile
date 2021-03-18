@@ -9,7 +9,7 @@ namespace FerumAPI.Models
 {
     public class StepOfOrderModel
     {
-        public StepOfOrderModel(StepOfOrder stepOfOrder, bool viewTrouble)
+        public StepOfOrderModel(StepOfOrder stepOfOrder)
         {
             Id = stepOfOrder.Id;
             Proccess = new ProccessModel(stepOfOrder.Proccess);
@@ -19,9 +19,8 @@ namespace FerumAPI.Models
             if (stepOfOrder.Movement != null)
                 Movement = new MovementModel(stepOfOrder.Movement);
             if (stepOfOrder.Shipment != null)
-                Shipment = new ShipmentModel(stepOfOrder.Shipment, true);
-            if (viewTrouble)
-                Trouble = stepOfOrder.Trouble.ToList().ConvertAll(p => new TroubleModel(p, true));
+                Shipment = new ShipmentModel(stepOfOrder.Shipment);
+            Trouble = stepOfOrder.Trouble.ToList().ConvertAll(p => new TroubleModel(p, true));
             TimeSpent = stepOfOrder.TimeSpent;
         }
         [JsonIgnore]

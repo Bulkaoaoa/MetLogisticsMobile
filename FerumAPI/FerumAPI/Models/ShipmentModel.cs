@@ -9,15 +9,13 @@ namespace FerumAPI.Models
 {
     public class ShipmentModel
     {
-        public ShipmentModel(Shipment shipment, bool viewNOW)
+        public ShipmentModel(Shipment shipment)
         {
-                Id = shipment.Id;
-                if (viewNOW)
-                    NomenclatureOfWarehouse = new NomenclatureOfWarehouseModel(shipment.NomenclatureOfWarehouse, true);
-                Count = shipment.Count;
+            Id = shipment.Id;
+            Count = shipment.Count;
+            NomenclatureOfWarehouse = new NomenclatureOfWarehouseModel(shipment.NomenclatureOfWarehouse);
         }
         public int Id { get; set; }
-        public int NomenclatureOfWarehouseId { get; set; }
         public decimal Count { get; set; }
 
         public NomenclatureOfWarehouseModel NomenclatureOfWarehouse { get; set; }

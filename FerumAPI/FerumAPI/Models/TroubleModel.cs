@@ -13,8 +13,7 @@ namespace FerumAPI.Models
         {
             Id = trouble.Id;
             Description = trouble.Description;
-            if (viewTypeTrouble)
-                TypeOfTrouble = new TypeOfTroubleModel(trouble.TypeOfTrouble);
+            TypeOfTrouble = new TypeOfTroubleModel(trouble.TypeOfTrouble);
         }
         public int Id { get; set; }
         public string Description { get; set; }

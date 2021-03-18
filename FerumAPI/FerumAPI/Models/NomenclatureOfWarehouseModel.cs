@@ -9,14 +9,13 @@ namespace FerumAPI.Models
 {
     public class NomenclatureOfWarehouseModel
     {
-        public NomenclatureOfWarehouseModel(NomenclatureOfWarehouse nomenclatureModel, bool viewCell)
+        public NomenclatureOfWarehouseModel(NomenclatureOfWarehouse nomenclatureModel)
         {
             Id = nomenclatureModel.Id;
-            Nomenclature = new NomenclatureModel(nomenclatureModel.Nomenclature, false, false);
+            Nomenclature = new NomenclatureModel(nomenclatureModel.Nomenclature);
             //Count = nomenclatureModel.Count;
             Barcode = nomenclatureModel.Barcode;
-            if (viewCell)
-                Cell = new CellModel(nomenclatureModel.Cell, false, true);
+            Cell = new CellModel(nomenclatureModel.Cell);
         }
         [JsonIgnore]
         public string NomenclatureId { get; set; }

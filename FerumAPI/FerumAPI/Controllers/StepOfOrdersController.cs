@@ -33,7 +33,23 @@ namespace FerumAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(new StepOfOrderModel(stepOfOrderList.FirstOrDefault(p => p.isDone == false), true));
+            List<StepOfOrder> resultStepOfOrdersList = new List<StepOfOrder>();
+            if (stepOfOrderList.FirstOrDefault(p => p.isDone == false).Shipment != null)
+            {
+                foreach (var item in stepOfOrderList.Where(p=>p.isDone==false).ToList())
+                {
+                    if (item.Shipment == null)
+                    {
+                        break;
+                    }
+                    resultStepOfOrdersList.Add(item);
+                }
+            }
+            else
+            {
+                resultStepOfOrdersList.Add(stepOfOrderList.FirstOrDefault(p => p.isDone == false));
+            }
+            return Ok(resultStepOfOrdersList.ConvertAll(p=> new StepOfOrderModel(p)));
         }
         [ResponseType(typeof(Trouble))]
         [Route("api/Courier/PostTrouble")]
@@ -95,7 +111,7 @@ namespace FerumAPI.Controllers
 
         // POST: api/StepOfOrders
         [ResponseType(typeof(StepOfOrder))]
-        public  IHttpActionResult PostStepOfOrder(string orderId)
+        public IHttpActionResult PostStepOfOrder(string orderId)
         {
             List<Proccess> proccesses = db.Proccess.ToList();
             List<NomenclatureOfOrder> nomenclatureOfOrders = new List<NomenclatureOfOrder>();
@@ -178,6 +194,14 @@ namespace FerumAPI.Controllers
                         ProcessId = 3,
                         Proccess = proccesses.FirstOrDefault(p => p.Id == 3),
                     });
+                    stepOfOrders.Insert(stepOfOrders.IndexOf(item)+1, new StepOfOrder
+                    {
+                        isDone = false,
+                        Movement = move,
+                        OrderId = orderId,
+                        ProcessId = 6,
+                        Proccess = proccesses.FirstOrDefault(p => p.Id == 6),
+                    });
                     warehouse = currentWarehouse;
                 }
             }
@@ -208,7 +232,7 @@ namespace FerumAPI.Controllers
             db.StepOfOrder.AddRange(stepOfOrders);
             db.Trouble.AddRange(troubles);
             db.SaveChanges();
-            return Ok(stepOfOrders.ToList().ConvertAll(p=> new StepOfOrderModel(p, true)));
+            return Ok(stepOfOrders.ToList().ConvertAll(p => new StepOfOrderModel(p)));
         }
 
         private static StepOfOrder CreateShipment(string orderId, NomenclatureOfOrder item, NomenclatureOfWarehouse nomenclatureOfWarehouse, decimal count, List<Proccess> proccesses)

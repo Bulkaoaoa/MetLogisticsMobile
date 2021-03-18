@@ -9,19 +9,17 @@ namespace FerumAPI.Models
 {
     public class OrderModel
     {
-        public OrderModel(Order order, bool viewClient, bool viewNomenclatureOfOrder)
+        public OrderModel(Order order)
         {
             Id = order.Id;
             DateOfCreate = order.DateOfCreate;
-            if (viewClient)
-                Client = new ClientModel(order.Client, false, false);
+            Client = new ClientModel(order.Client);
             Effectiveness = order.Effectiveness;
             DateTimeOfArrivle = order.DateTimeOfArrivle;
-            if (viewNomenclatureOfOrder)
-                NomenclatureOfOrder = order.NomenclatureOfOrder.ToList().ConvertAll(p => new NomenclatureOfOrderModel(p, false));
+            NomenclatureOfOrder = order.NomenclatureOfOrder.ToList().ConvertAll(p => new NomenclatureOfOrderModel(p));
             //QueueOfWarehouse = order.QueueOfWarehouse.ToList();
             //StepOfOrder = order.StepOfOrder.ToList();
-            
+
 
         }
         public string Id { get; set; }

@@ -21,7 +21,7 @@ namespace FerumAPI.Controllers
         // GET: api/Nomenclatures
         public IHttpActionResult GetNomenclature()
         {
-            return Ok(db.Nomenclature.ToList().ConvertAll(p => new NomenclatureModel(p, true, true)));
+            return Ok(db.Nomenclature.ToList().ConvertAll(p => new NomenclatureModel(p)));
         }
 
         // GET: api/Nomenclatures/5

@@ -12,7 +12,7 @@ namespace FerumAPI.Models
         public MovementModel(Movement movement)
         {
             Id = movement.Id;
-            Warehouse = new WarehouseModel(movement.Warehouse, false);
+            Warehouse = new WarehouseModel(movement.Warehouse);
         }
 
         public int Id { get; set; }

@@ -21,7 +21,7 @@ namespace FerumAPI.Controllers
         // GET: api/Clients
         public IHttpActionResult GetClient()
         {
-            return Ok(db.Client.ToList().ConvertAll(p => new ClientModel(p, true, true)));
+            return Ok(db.Client.ToList().ConvertAll(p => new ClientModel(p)));
         }
 
         // GET: api/Clients/5
@@ -39,15 +39,24 @@ namespace FerumAPI.Controllers
 
         [ResponseType(typeof(Client))]
         [Route("api/Client/OrdersToDay")]
-        public IHttpActionResult GetOrders(string id)
+        public IHttpActionResult GetOrders(string clietnId)
         {
-            Client client = db.Client.Find(id);
+            Client client = db.Client.Find(clietnId);
             if (client == null)
             {
                 return NotFound();
             }
-            return Ok(client.Order.ToList().Where(p => p.DateTimeOfArrivle.Value.Date == DateTime.UtcNow.AddHours(3).Date)
-                .ToList().ConvertAll(p => new OrderModel(p, false, true)));
+            List<Order> orderList = new List<Order>();
+            orderList.AddRange(client.Order.ToList());
+            foreach (var item in client.Order)
+            {
+                if (item.DateTimeOfArrivle == null)
+                    orderList.Remove(item);
+            }
+            if (orderList.Count > 0)
+            return Ok(orderList.Where(p => p.DateTimeOfArrivle.Value.Date == DateTime.UtcNow.AddHours(3).Date)
+                .ToList().ConvertAll(p => new OrderModel(p)));
+            return NotFound();
         }
 
         [Route("api/ClientOrCourier/Authorization")]
@@ -71,7 +80,7 @@ namespace FerumAPI.Controllers
                 {
                     return NotFound();
                 }
-                return Ok(new ClientModel(client, true, true));
+                return Ok(new ClientModel(client));
             }
         }
 

@@ -21,7 +21,7 @@ namespace FerumAPI.Controllers
         [ResponseType(typeof(List<OrderModel>))]
         public IHttpActionResult GetOrder()
         {
-            return Ok(db.Order.ToList().ConvertAll(p => new OrderModel(p, true, true)));
+            return Ok(db.Order.ToList().ConvertAll(p => new OrderModel(p)));
         }
 
         // GET: api/Orders/5
