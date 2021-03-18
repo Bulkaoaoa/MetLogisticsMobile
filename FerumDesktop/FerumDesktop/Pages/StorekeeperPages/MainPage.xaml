@@ -1,0 +1,52 @@
+﻿<Page x:Class="FerumDesktop.Pages.StorekeeperPages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FerumDesktop.Pages.StorekeeperPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1000"
+      Title="Storekeeper's main menu">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button HorizontalAlignment="Center" Padding="40 0"
+                Name="BtnQueueOfCars" Click="BtnQueueOfCars_Click">Очередь машин</Button>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.ColumnSpan="2" Source="/Assets/Icons.images/IconsHighQual/MainImage.png"></Image>
+
+            <Grid Background="White" Grid.Column="1">
+                <Button VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 15 0 0" Padding="35 0"
+                        Name="BtnRefreshData" Click="BtnRefreshData_Click">Обновить данные</Button>
+                <TextBlock Style="{StaticResource StyleTbkMain}" Text="Нет&#10;активных&#10;заказов" VerticalAlignment="Center"
+                           Margin="20 0" FontSize="50" Name="TbkNoOrders" Visibility="Visible"></TextBlock>
+                
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Name="SPOrders" Visibility="Hidden">
+                    <TextBlock Style="{StaticResource StyleTbkMain}" TextAlignment="Left" Text="Заказ №" FontSize="40" Margin="8 0 0 0"></TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource StyleTbkMain}" Text="{Binding Id}" FontSize="40" Margin="8 0 0 0"></TextBlock>
+                        <Image Height="40" Margin="10 0 8 0" Cursor="Hand" ToolTip="Информация о заказе"
+                               Source="/FerumDesktop;component/Assets/Icons.images/IconsHighQual/IconQuestion.png"
+                               Name="ImgInfo" MouseLeftButtonDown="ImgInfo_MouseLeftButtonDown"></Image>
+                    </StackPanel>
+                    <Button FontWeight="Bold" Margin="5 30 5 5" Name="BtnConfirmShipment" 
+                            Click="BtnConfirmShipment_Click" Padding="10 0">Подтвердить отгрузку</Button>
+                    <TextBlock TextDecorations="Underline" Style="{StaticResource StyleTbkTriggered}" Name="TbkProblem" FontSize="14"
+                               TextAlignment="Center" MouseLeftButtonDown="TbkProblem_MouseLeftButtonDown">У нас возникла проблема...</TextBlock>
+                </StackPanel>
+            </Grid>
+            
+        </Grid>
+        
+    </Grid>
+</Page>

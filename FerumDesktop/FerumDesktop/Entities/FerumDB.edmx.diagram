@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bb438e2774984994af252db1ced17a2a" Name="Diagram1">
+        <EntityTypeShape EntityType="FerumModel.Cell" Width="1.5" PointX="9.75" PointY="14.75" />
+        <EntityTypeShape EntityType="FerumModel.Client" Width="1.5" PointX="8.25" PointY="22" />
+        <EntityTypeShape EntityType="FerumModel.Courier" Width="1.5" PointX="8.25" PointY="18.5" />
+        <EntityTypeShape EntityType="FerumModel.Movement" Width="1.5" PointX="9.75" PointY="12.25" />
+        <EntityTypeShape EntityType="FerumModel.MovementStorekeeper" Width="1.5" PointX="9.75" PointY="8.5" />
+        <EntityTypeShape EntityType="FerumModel.Nomenclature" Width="1.5" PointX="9.75" PointY="25.875" />
+        <EntityTypeShape EntityType="FerumModel.NomenclatureOfOrder" Width="1.5" PointX="12.75" PointY="22.75" />
+        <EntityTypeShape EntityType="FerumModel.NomenclatureOfWarehouse" Width="1.5" PointX="12" PointY="14.5" />
+        <EntityTypeShape EntityType="FerumModel.Order" Width="1.5" PointX="10.5" PointY="19.875" />
+        <EntityTypeShape EntityType="FerumModel.Proccess" Width="1.5" PointX="14.25" PointY="17.625" />
+        <EntityTypeShape EntityType="FerumModel.Queue" Width="1.5" PointX="12.75" PointY="9.875" />
+        <EntityTypeShape EntityType="FerumModel.Role" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="FerumModel.Shipment" Width="1.5" PointX="14.25" PointY="14.75" />
+        <EntityTypeShape EntityType="FerumModel.StepOfOrder" Width="1.5" PointX="16.5" PointY="12.625" />
+        <EntityTypeShape EntityType="FerumModel.Storekeeper" Width="1.5" PointX="5.25" PointY="6.875" />
+        <EntityTypeShape EntityType="FerumModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="FerumModel.Trouble" Width="1.5" PointX="18.75" PointY="13.375" />
+        <EntityTypeShape EntityType="FerumModel.TypeOfQueue" Width="1.5" PointX="10.5" PointY="5.25" />
+        <EntityTypeShape EntityType="FerumModel.TypeOfTrouble" Width="1.5" PointX="16.5" PointY="9.75" />
+        <EntityTypeShape EntityType="FerumModel.User" Width="1.5" PointX="3" PointY="6.75" />
+        <EntityTypeShape EntityType="FerumModel.Warehouse" Width="1.5" PointX="7.5" PointY="9.875" />
+        <AssociationConnector Association="FerumModel.FK_Cell_Warehouse" />
+        <AssociationConnector Association="FerumModel.FK_NomenclatureOfWarehouse_Cell" />
+        <AssociationConnector Association="FerumModel.FK_Courier_Client" />
+        <AssociationConnector Association="FerumModel.FK_Order_Client" />
+        <AssociationConnector Association="FerumModel.FK_Order_Courier" />
+        <AssociationConnector Association="FerumModel.FK_Movement_Warehouse" />
+        <AssociationConnector Association="FerumModel.FK_StepOfOrder_Movement" />
+        <AssociationConnector Association="FerumModel.FK_MovementStorekeeper_Storekeeper" />
+        <AssociationConnector Association="FerumModel.FK_MovementStorekeeper_Warehouse" />
+        <AssociationConnector Association="FerumModel.FK_MovementStorekeeper_Warehouse1" />
+        <AssociationConnector Association="FerumModel.FK_NomenclatureOfClient_Nomenclature" />
+        <AssociationConnector Association="FerumModel.FK_NomenclatureOfWarehouse_Nomenclature" />
+        <AssociationConnector Association="FerumModel.FK_NomenclatureOfClient_Order" />
+        <AssociationConnector Association="FerumModel.FK_Shipment_NomenclatureOfWarehouse" />
+        <AssociationConnector Association="FerumModel.FK_QueueOfWarehouse_Order" />
+        <AssociationConnector Association="FerumModel.FK_StepOfOrder_Order" />
+        <AssociationConnector Association="FerumModel.FK_StepOfOrder_Proccess" />
+        <AssociationConnector Association="FerumModel.FK_QueueOfWarehouse_TypeOfQueue" />
+        <AssociationConnector Association="FerumModel.FK_QueueOfWarehouse_Warehouse" />
+        <AssociationConnector Association="FerumModel.FK_User_Role" />
+        <AssociationConnector Association="FerumModel.FK_StepOfOrder_Shipment" />
+        <AssociationConnector Association="FerumModel.FK_Trouble_StepOfOrder" />
+        <AssociationConnector Association="FerumModel.FK_Storekeeper_User" />
+        <AssociationConnector Association="FerumModel.FK_Warehouse_Storekeeper1" />
+        <AssociationConnector Association="FerumModel.FK_Trouble_TypeOfTrouble" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,25 @@
+﻿<Page x:Class="FerumDesktop.Pages.GeneralPages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FerumDesktop.Pages.GeneralPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1000"
+      Title="Authorization">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource StyleTbkMain}" Margin="8 8 8 0">Логин</TextBlock>
+            <TextBox  Margin="8 8 8 16" Width="300" Name="TbxLogin"></TextBox>
+            <TextBlock Style="{StaticResource StyleTbkMain}" Margin="8 8 8 0">Пароль</TextBlock>
+            <PasswordBox Margin="8 8 8 16" Width="300" Name="PbxPassword"></PasswordBox>
+            <Button FontSize="20" Name="BtnLogin" Click="BtnLogin_Click" IsDefault="True">Войти</Button>
+        </StackPanel>
+            <Image Source="/Assets/Icons.images/IconsHighQual/MainImage.png" Grid.Column="1"></Image>
+    </Grid>
+</Page>

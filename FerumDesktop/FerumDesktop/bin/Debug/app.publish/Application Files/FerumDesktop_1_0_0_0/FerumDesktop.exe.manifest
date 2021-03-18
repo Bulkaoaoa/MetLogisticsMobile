@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="FerumDesktop.exe" version="1.0.0.0" publicKeyToken="fa032cc52072f785" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="AppLogo.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="FerumDesktop" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="FerumDesktop.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntityFramework.dll" size="5225168">
+      <assemblyIdentity name="EntityFramework" version="6.0.0.0" publicKeyToken="B77A5C561934E089" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>nCD7KthqdgsMauvZMByQCYkdAq4UcgqTkmwLU1uK0Js=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntityFramework.SqlServer.dll" size="622288">
+      <assemblyIdentity name="EntityFramework.SqlServer" version="6.0.0.0" publicKeyToken="B77A5C561934E089" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>4OEmw7inupUB0D+Z1Upcu9F0vOy2FwCYq0zBIZ8n+TM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FerumDesktop.exe" size="5925832">
+      <assemblyIdentity name="FerumDesktop" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>98XwduV3YaPieC+5cXfUpefYwbSOUug1aRhecueJ9jI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="AppLogo.ico" size="4286">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>iqlW+tcv12V/AIsm7VJjKz2Xx8AobaPduw49nL4KIKo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Entities\FerumDB.Context.tt" size="22931">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>vrhorUk9bahjN9FJSSg/m7FfGjPFmTDCG1s8rqA1WYo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Entities\FerumDB.tt" size="25276">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>6wNHfotPiH2bgRCAXhGqhPEBEim4grB6S3PR5vjY4qo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="FerumDesktop.exe.config" size="1392">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>KCmXKrwShDpDsJYAcdqwjL47fDIyoxgc53gCzoBXilU=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=COLLEGE\Student20" issuerKeyHash="135256a54012f3e07e5dc032270c67a2d08b9311" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>zZtX1WbVC6MGwncy4RuIb4qE89j7ZHnAAu1MK/Z5PuM=</DigestValue></Reference></SignedInfo><SignatureValue>c+7tjKs7zvZL9gNJEkL8vU3yv0UZMcESNXN5q3ZByFU4fsYWEplbGbR/PsurI+zizqJxP+/EN56ftOHyBE+nwarH3JhIOlyghQMdFHVKRAsnq+dkXn0cpYWFJ77quhO+/FY5qm+46JVfwj1Ny7a114LUcaA54O/gTyG6g/foWe4=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>r+crHGpqu3aViUJWG0iL6EHYEeDt+wGJ4WDJeLMX+QskChxq/thNw4bKTH9SyXGwCbSMNT7pOamT1rzgCeNd1JQu9dCt62vJjjYSVmgroJi6W1LkwLOjo7fFdWI18nVxBsacBMEK7kUCPKSeTr6UC2vK9VZEpJAcSTyOiypJJck=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="e33e79f62b4ced02c07964fbd8f3848a6f881be13277c206a30bd566d5579bcd" Description="" Url=""><as:assemblyIdentity name="FerumDesktop.exe" version="1.0.0.0" publicKeyToken="fa032cc52072f785" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=COLLEGE\Student20</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>++o3yPj1iWx85jxUg6etvAbe1xLr+RMKvGk8aqHQRxU=</DigestValue></Reference></SignedInfo><SignatureValue>iLhZIDFLRBcPgyb5n1derD0ESShdPU+DyyxScu5w7JPaChukP0QYB39w2IPA90YnihYoVdTWZAdnHys6IVRYsjKF9zBe9w37vv7pdgY8RHbd5Ry5cWw4tGzV9F5Stu/rP6jD0GbNTN3AoQ/rcvL499+auaO0zaS5oVlPHxbKSko=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>r+crHGpqu3aViUJWG0iL6EHYEeDt+wGJ4WDJeLMX+QskChxq/thNw4bKTH9SyXGwCbSMNT7pOamT1rzgCeNd1JQu9dCt62vJjjYSVmgroJi6W1LkwLOjo7fFdWI18nVxBsacBMEK7kUCPKSeTr6UC2vK9VZEpJAcSTyOiypJJck=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB3TCCAUagAwIBAgIQIOWbVBrZcZlIWKCcB3CXczANBgkqhkiG9w0BAQsFADAtMSswKQYDVQQDHiIAQwBPAEwATABFAEcARQBcAFMAdAB1AGQAZQBuAHQAMgAwMB4XDTIxMDMxODE1NDgwNFoXDTIyMDMxODIxNDgwNFowLTErMCkGA1UEAx4iAEMATwBMAEwARQBHAEUAXABTAHQAdQBkAGUAbgB0ADIAMDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAr+crHGpqu3aViUJWG0iL6EHYEeDt+wGJ4WDJeLMX+QskChxq/thNw4bKTH9SyXGwCbSMNT7pOamT1rzgCeNd1JQu9dCt62vJjjYSVmgroJi6W1LkwLOjo7fFdWI18nVxBsacBMEK7kUCPKSeTr6UC2vK9VZEpJAcSTyOiypJJckCAwEAATANBgkqhkiG9w0BAQsFAAOBgQBXXRKaRGFPss43yFyS5kngB0JGgFW+MKMeDNCckulhOD2M9P8nc1Di5LnyVsL2UxDjpop/6qfUPRqe9bCkddtEOPTBZcsKnJXuV10Rz6045MLMnmZVfcmWEFVfRMsHgdSl8PNMFno5Ib7LipjiHIE9yNSc2rFV01TVhv6hy0xYYw==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

@@ -1,0 +1,23 @@
+﻿<Window x:Class="FerumDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FerumDesktop"
+        mc:Ignorable="d" MinHeight="600" MinWidth="1000" Height="600" Width="1000"
+        Title="{Binding ElementName=MainFrame, Path=Content.Title, StringFormat={}Ferum - {0}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal">
+            <Image Cursor="Hand" MouseLeftButtonDown="ImgBack_MouseLeftButtonDown" VerticalAlignment="Center" Name="ImgBack"
+                   Margin="36 0 30 0" Height="30" Source="/Assets/Icons.images/IconsHighQual/BackButton.png" ToolTip="Назад"></Image>
+            <Image Height="46" Width="50" VerticalAlignment="Center" Source="/Assets/Icons.images/IconsHighQual/Logo.png"></Image>
+        </StackPanel>
+
+        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"></Frame>
+    </Grid>
+</Window>

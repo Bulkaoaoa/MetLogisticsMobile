@@ -1,0 +1,614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FerumModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cell">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="WarehouseId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Login" Type="uniqueidentifier" />
+    <Property Name="Password" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Courier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TelephoneNumber" Type="nvarchar" MaxLength="15" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="CarNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="CarCarrying" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Password" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ClientId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Movement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WarehouseId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MovementStorekeeper">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTimeMovement" Type="datetime" Nullable="false" />
+    <Property Name="StorekeeperId" Type="int" Nullable="false" />
+    <Property Name="OldWarehouseId" Type="int" Nullable="false" />
+    <Property Name="NewWarehouseId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nomenclature">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NomenclatureOfOrder">
+    <Key>
+      <PropertyRef Name="NumenclatureId" />
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="NumenclatureId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Count" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NomenclatureOfWarehouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="NomenclatureId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Count" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Barcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CellId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateOfCreate" Type="datetime" Nullable="false" />
+    <Property Name="ClientId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourierId" Type="int" />
+    <Property Name="Effectiveness" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DateTimeOfArrivle" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Proccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NormativeTime" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Queue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="OrderId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WarehosueId" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Place" Type="int" Nullable="false" />
+    <Property Name="TypeOfQueue" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Shipment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomenclatureOfWarehouseId" Type="int" Nullable="false" />
+    <Property Name="Count" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StepOfOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ProcessId" Type="int" Nullable="false" />
+    <Property Name="OrderId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MovementId" Type="int" />
+    <Property Name="ShipmentId" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeSpent" Type="int" />
+    <Property Name="isDone" Type="bit" Nullable="false" />
+    <Property Name="DateOfStart" Type="datetime" />
+    <Property Name="DateOfEnd" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Storekeeper">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Effectiveness" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Trouble">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="StepOfOrderId" Type="int" Nullable="false" />
+    <Property Name="TypeOfTroubleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeOfQueue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeOfTrouble">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Login" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Password" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StorekeeperId" Type="int" />
+  </EntityType>
+  <Association Name="FK_Cell_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="Cell" Type="Self.Cell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cell">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courier_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Courier" Type="Self.Courier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Courier">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Movement_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="Movement" Type="Self.Movement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Movement">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementStorekeeper_Storekeeper">
+    <End Role="Storekeeper" Type="Self.Storekeeper" Multiplicity="1" />
+    <End Role="MovementStorekeeper" Type="Self.MovementStorekeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storekeeper">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovementStorekeeper">
+        <PropertyRef Name="StorekeeperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementStorekeeper_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="MovementStorekeeper" Type="Self.MovementStorekeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovementStorekeeper">
+        <PropertyRef Name="OldWarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementStorekeeper_Warehouse1">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="MovementStorekeeper" Type="Self.MovementStorekeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovementStorekeeper">
+        <PropertyRef Name="NewWarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NomenclatureOfClient_Nomenclature">
+    <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="1" />
+    <End Role="NomenclatureOfOrder" Type="Self.NomenclatureOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nomenclature">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NomenclatureOfOrder">
+        <PropertyRef Name="NumenclatureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NomenclatureOfClient_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="NomenclatureOfOrder" Type="Self.NomenclatureOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NomenclatureOfOrder">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NomenclatureOfWarehouse_Cell">
+    <End Role="Cell" Type="Self.Cell" Multiplicity="1" />
+    <End Role="NomenclatureOfWarehouse" Type="Self.NomenclatureOfWarehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cell">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NomenclatureOfWarehouse">
+        <PropertyRef Name="CellId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NomenclatureOfWarehouse_Nomenclature">
+    <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="1" />
+    <End Role="NomenclatureOfWarehouse" Type="Self.NomenclatureOfWarehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nomenclature">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NomenclatureOfWarehouse">
+        <PropertyRef Name="NomenclatureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Courier">
+    <End Role="Courier" Type="Self.Courier" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CourierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueOfWarehouse_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="Queue" Type="Self.Queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Queue">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueOfWarehouse_TypeOfQueue">
+    <End Role="TypeOfQueue" Type="Self.TypeOfQueue" Multiplicity="1" />
+    <End Role="Queue" Type="Self.Queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfQueue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Queue">
+        <PropertyRef Name="TypeOfQueue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueOfWarehouse_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="Queue" Type="Self.Queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Queue">
+        <PropertyRef Name="WarehosueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shipment_NomenclatureOfWarehouse">
+    <End Role="NomenclatureOfWarehouse" Type="Self.NomenclatureOfWarehouse" Multiplicity="1" />
+    <End Role="Shipment" Type="Self.Shipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NomenclatureOfWarehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shipment">
+        <PropertyRef Name="NomenclatureOfWarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StepOfOrder_Movement">
+    <End Role="Movement" Type="Self.Movement" Multiplicity="0..1" />
+    <End Role="StepOfOrder" Type="Self.StepOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StepOfOrder">
+        <PropertyRef Name="MovementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StepOfOrder_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="StepOfOrder" Type="Self.StepOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StepOfOrder">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StepOfOrder_Proccess">
+    <End Role="Proccess" Type="Self.Proccess" Multiplicity="1" />
+    <End Role="StepOfOrder" Type="Self.StepOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proccess">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StepOfOrder">
+        <PropertyRef Name="ProcessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StepOfOrder_Shipment">
+    <End Role="Shipment" Type="Self.Shipment" Multiplicity="0..1" />
+    <End Role="StepOfOrder" Type="Self.StepOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shipment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StepOfOrder">
+        <PropertyRef Name="ShipmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Storekeeper_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Storekeeper" Type="Self.Storekeeper" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Storekeeper">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trouble_StepOfOrder">
+    <End Role="StepOfOrder" Type="Self.StepOfOrder" Multiplicity="1" />
+    <End Role="Trouble" Type="Self.Trouble" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StepOfOrder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trouble">
+        <PropertyRef Name="StepOfOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trouble_TypeOfTrouble">
+    <End Role="TypeOfTrouble" Type="Self.TypeOfTrouble" Multiplicity="1" />
+    <End Role="Trouble" Type="Self.Trouble" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfTrouble">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trouble">
+        <PropertyRef Name="TypeOfTroubleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Warehouse_Storekeeper1">
+    <End Role="Storekeeper" Type="Self.Storekeeper" Multiplicity="0..1" />
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storekeeper">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Warehouse">
+        <PropertyRef Name="StorekeeperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FerumModelStoreContainer">
+    <EntitySet Name="Cell" EntityType="Self.Cell" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Courier" EntityType="Self.Courier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Movement" EntityType="Self.Movement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovementStorekeeper" EntityType="Self.MovementStorekeeper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nomenclature" EntityType="Self.Nomenclature" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NomenclatureOfOrder" EntityType="Self.NomenclatureOfOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NomenclatureOfWarehouse" EntityType="Self.NomenclatureOfWarehouse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proccess" EntityType="Self.Proccess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Queue" EntityType="Self.Queue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shipment" EntityType="Self.Shipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StepOfOrder" EntityType="Self.StepOfOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Storekeeper" EntityType="Self.Storekeeper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trouble" EntityType="Self.Trouble" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeOfQueue" EntityType="Self.TypeOfQueue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeOfTrouble" EntityType="Self.TypeOfTrouble" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cell_Warehouse" Association="Self.FK_Cell_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Cell" EntitySet="Cell" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courier_Client" Association="Self.FK_Courier_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Courier" EntitySet="Courier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Movement_Warehouse" Association="Self.FK_Movement_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Movement" EntitySet="Movement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementStorekeeper_Storekeeper" Association="Self.FK_MovementStorekeeper_Storekeeper">
+      <End Role="Storekeeper" EntitySet="Storekeeper" />
+      <End Role="MovementStorekeeper" EntitySet="MovementStorekeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementStorekeeper_Warehouse" Association="Self.FK_MovementStorekeeper_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="MovementStorekeeper" EntitySet="MovementStorekeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementStorekeeper_Warehouse1" Association="Self.FK_MovementStorekeeper_Warehouse1">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="MovementStorekeeper" EntitySet="MovementStorekeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NomenclatureOfClient_Nomenclature" Association="Self.FK_NomenclatureOfClient_Nomenclature">
+      <End Role="Nomenclature" EntitySet="Nomenclature" />
+      <End Role="NomenclatureOfOrder" EntitySet="NomenclatureOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NomenclatureOfClient_Order" Association="Self.FK_NomenclatureOfClient_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="NomenclatureOfOrder" EntitySet="NomenclatureOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NomenclatureOfWarehouse_Cell" Association="Self.FK_NomenclatureOfWarehouse_Cell">
+      <End Role="Cell" EntitySet="Cell" />
+      <End Role="NomenclatureOfWarehouse" EntitySet="NomenclatureOfWarehouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NomenclatureOfWarehouse_Nomenclature" Association="Self.FK_NomenclatureOfWarehouse_Nomenclature">
+      <End Role="Nomenclature" EntitySet="Nomenclature" />
+      <End Role="NomenclatureOfWarehouse" EntitySet="NomenclatureOfWarehouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Courier" Association="Self.FK_Order_Courier">
+      <End Role="Courier" EntitySet="Courier" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueOfWarehouse_Order" Association="Self.FK_QueueOfWarehouse_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Queue" EntitySet="Queue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueOfWarehouse_TypeOfQueue" Association="Self.FK_QueueOfWarehouse_TypeOfQueue">
+      <End Role="TypeOfQueue" EntitySet="TypeOfQueue" />
+      <End Role="Queue" EntitySet="Queue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueOfWarehouse_Warehouse" Association="Self.FK_QueueOfWarehouse_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Queue" EntitySet="Queue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shipment_NomenclatureOfWarehouse" Association="Self.FK_Shipment_NomenclatureOfWarehouse">
+      <End Role="NomenclatureOfWarehouse" EntitySet="NomenclatureOfWarehouse" />
+      <End Role="Shipment" EntitySet="Shipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StepOfOrder_Movement" Association="Self.FK_StepOfOrder_Movement">
+      <End Role="Movement" EntitySet="Movement" />
+      <End Role="StepOfOrder" EntitySet="StepOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StepOfOrder_Order" Association="Self.FK_StepOfOrder_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="StepOfOrder" EntitySet="StepOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StepOfOrder_Proccess" Association="Self.FK_StepOfOrder_Proccess">
+      <End Role="Proccess" EntitySet="Proccess" />
+      <End Role="StepOfOrder" EntitySet="StepOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StepOfOrder_Shipment" Association="Self.FK_StepOfOrder_Shipment">
+      <End Role="Shipment" EntitySet="Shipment" />
+      <End Role="StepOfOrder" EntitySet="StepOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Storekeeper_User" Association="Self.FK_Storekeeper_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Storekeeper" EntitySet="Storekeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trouble_StepOfOrder" Association="Self.FK_Trouble_StepOfOrder">
+      <End Role="StepOfOrder" EntitySet="StepOfOrder" />
+      <End Role="Trouble" EntitySet="Trouble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trouble_TypeOfTrouble" Association="Self.FK_Trouble_TypeOfTrouble">
+      <End Role="TypeOfTrouble" EntitySet="TypeOfTrouble" />
+      <End Role="Trouble" EntitySet="Trouble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Warehouse_Storekeeper1" Association="Self.FK_Warehouse_Storekeeper1">
+      <End Role="Storekeeper" EntitySet="Storekeeper" />
+      <End Role="Warehouse" EntitySet="Warehouse" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

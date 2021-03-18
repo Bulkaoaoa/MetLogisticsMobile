@@ -1,0 +1,664 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FerumModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FerumEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cell" EntityType="FerumModel.Cell" />
+    <EntitySet Name="Client" EntityType="FerumModel.Client" />
+    <EntitySet Name="Courier" EntityType="FerumModel.Courier" />
+    <EntitySet Name="Movement" EntityType="FerumModel.Movement" />
+    <EntitySet Name="MovementStorekeeper" EntityType="FerumModel.MovementStorekeeper" />
+    <EntitySet Name="Nomenclature" EntityType="FerumModel.Nomenclature" />
+    <EntitySet Name="NomenclatureOfOrder" EntityType="FerumModel.NomenclatureOfOrder" />
+    <EntitySet Name="NomenclatureOfWarehouse" EntityType="FerumModel.NomenclatureOfWarehouse" />
+    <EntitySet Name="Order" EntityType="FerumModel.Order" />
+    <EntitySet Name="Proccess" EntityType="FerumModel.Proccess" />
+    <EntitySet Name="Queue" EntityType="FerumModel.Queue" />
+    <EntitySet Name="Role" EntityType="FerumModel.Role" />
+    <EntitySet Name="Shipment" EntityType="FerumModel.Shipment" />
+    <EntitySet Name="StepOfOrder" EntityType="FerumModel.StepOfOrder" />
+    <EntitySet Name="Storekeeper" EntityType="FerumModel.Storekeeper" />
+    <EntitySet Name="sysdiagrams" EntityType="FerumModel.sysdiagrams" />
+    <EntitySet Name="Trouble" EntityType="FerumModel.Trouble" />
+    <EntitySet Name="TypeOfQueue" EntityType="FerumModel.TypeOfQueue" />
+    <EntitySet Name="TypeOfTrouble" EntityType="FerumModel.TypeOfTrouble" />
+    <EntitySet Name="User" EntityType="FerumModel.User" />
+    <EntitySet Name="Warehouse" EntityType="FerumModel.Warehouse" />
+    <AssociationSet Name="FK_Cell_Warehouse" Association="FerumModel.FK_Cell_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Cell" EntitySet="Cell" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NomenclatureOfWarehouse_Cell" Association="FerumModel.FK_NomenclatureOfWarehouse_Cell">
+      <End Role="Cell" EntitySet="Cell" />
+      <End Role="NomenclatureOfWarehouse" EntitySet="NomenclatureOfWarehouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courier_Client" Association="FerumModel.FK_Courier_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Courier" EntitySet="Courier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Client" Association="FerumModel.FK_Order_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Courier" Association="FerumModel.FK_Order_Courier">
+      <End Role="Courier" EntitySet="Courier" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Movement_Warehouse" Association="FerumModel.FK_Movement_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Movement" EntitySet="Movement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StepOfOrder_Movement" Association="FerumModel.FK_StepOfOrder_Movement">
+      <End Role="Movement" EntitySet="Movement" />
+      <End Role="StepOfOrder" EntitySet="StepOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementStorekeeper_Storekeeper" Association="FerumModel.FK_MovementStorekeeper_Storekeeper">
+      <End Role="Storekeeper" EntitySet="Storekeeper" />
+      <End Role="MovementStorekeeper" EntitySet="MovementStorekeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementStorekeeper_Warehouse" Association="FerumModel.FK_MovementStorekeeper_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="MovementStorekeeper" EntitySet="MovementStorekeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementStorekeeper_Warehouse1" Association="FerumModel.FK_MovementStorekeeper_Warehouse1">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="MovementStorekeeper" EntitySet="MovementStorekeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NomenclatureOfClient_Nomenclature" Association="FerumModel.FK_NomenclatureOfClient_Nomenclature">
+      <End Role="Nomenclature" EntitySet="Nomenclature" />
+      <End Role="NomenclatureOfOrder" EntitySet="NomenclatureOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NomenclatureOfWarehouse_Nomenclature" Association="FerumModel.FK_NomenclatureOfWarehouse_Nomenclature">
+      <End Role="Nomenclature" EntitySet="Nomenclature" />
+      <End Role="NomenclatureOfWarehouse" EntitySet="NomenclatureOfWarehouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NomenclatureOfClient_Order" Association="FerumModel.FK_NomenclatureOfClient_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="NomenclatureOfOrder" EntitySet="NomenclatureOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shipment_NomenclatureOfWarehouse" Association="FerumModel.FK_Shipment_NomenclatureOfWarehouse">
+      <End Role="NomenclatureOfWarehouse" EntitySet="NomenclatureOfWarehouse" />
+      <End Role="Shipment" EntitySet="Shipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueOfWarehouse_Order" Association="FerumModel.FK_QueueOfWarehouse_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Queue" EntitySet="Queue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StepOfOrder_Order" Association="FerumModel.FK_StepOfOrder_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="StepOfOrder" EntitySet="StepOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StepOfOrder_Proccess" Association="FerumModel.FK_StepOfOrder_Proccess">
+      <End Role="Proccess" EntitySet="Proccess" />
+      <End Role="StepOfOrder" EntitySet="StepOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueOfWarehouse_TypeOfQueue" Association="FerumModel.FK_QueueOfWarehouse_TypeOfQueue">
+      <End Role="TypeOfQueue" EntitySet="TypeOfQueue" />
+      <End Role="Queue" EntitySet="Queue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueOfWarehouse_Warehouse" Association="FerumModel.FK_QueueOfWarehouse_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Queue" EntitySet="Queue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="FerumModel.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StepOfOrder_Shipment" Association="FerumModel.FK_StepOfOrder_Shipment">
+      <End Role="Shipment" EntitySet="Shipment" />
+      <End Role="StepOfOrder" EntitySet="StepOfOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trouble_StepOfOrder" Association="FerumModel.FK_Trouble_StepOfOrder">
+      <End Role="StepOfOrder" EntitySet="StepOfOrder" />
+      <End Role="Trouble" EntitySet="Trouble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Storekeeper_User" Association="FerumModel.FK_Storekeeper_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Storekeeper" EntitySet="Storekeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Warehouse_Storekeeper1" Association="FerumModel.FK_Warehouse_Storekeeper1">
+      <End Role="Storekeeper" EntitySet="Storekeeper" />
+      <End Role="Warehouse" EntitySet="Warehouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trouble_TypeOfTrouble" Association="FerumModel.FK_Trouble_TypeOfTrouble">
+      <End Role="TypeOfTrouble" EntitySet="TypeOfTrouble" />
+      <End Role="Trouble" EntitySet="Trouble" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cell">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="WarehouseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Warehouse" Relationship="FerumModel.FK_Cell_Warehouse" FromRole="Cell" ToRole="Warehouse" />
+    <NavigationProperty Name="NomenclatureOfWarehouse" Relationship="FerumModel.FK_NomenclatureOfWarehouse_Cell" FromRole="Cell" ToRole="NomenclatureOfWarehouse" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="Guid" />
+    <Property Name="Password" Type="Guid" />
+    <NavigationProperty Name="Courier" Relationship="FerumModel.FK_Courier_Client" FromRole="Client" ToRole="Courier" />
+    <NavigationProperty Name="Order" Relationship="FerumModel.FK_Order_Client" FromRole="Client" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Courier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TelephoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="FIO" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CarNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CarCarrying" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Password" Type="Guid" Nullable="false" />
+    <Property Name="ClientId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Client" Relationship="FerumModel.FK_Courier_Client" FromRole="Courier" ToRole="Client" />
+    <NavigationProperty Name="Order" Relationship="FerumModel.FK_Order_Courier" FromRole="Courier" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Movement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WarehouseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Warehouse" Relationship="FerumModel.FK_Movement_Warehouse" FromRole="Movement" ToRole="Warehouse" />
+    <NavigationProperty Name="StepOfOrder" Relationship="FerumModel.FK_StepOfOrder_Movement" FromRole="Movement" ToRole="StepOfOrder" />
+  </EntityType>
+  <EntityType Name="MovementStorekeeper">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTimeMovement" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StorekeeperId" Type="Int32" Nullable="false" />
+    <Property Name="OldWarehouseId" Type="Int32" Nullable="false" />
+    <Property Name="NewWarehouseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Storekeeper" Relationship="FerumModel.FK_MovementStorekeeper_Storekeeper" FromRole="MovementStorekeeper" ToRole="Storekeeper" />
+    <NavigationProperty Name="Warehouse" Relationship="FerumModel.FK_MovementStorekeeper_Warehouse" FromRole="MovementStorekeeper" ToRole="Warehouse" />
+    <NavigationProperty Name="Warehouse1" Relationship="FerumModel.FK_MovementStorekeeper_Warehouse1" FromRole="MovementStorekeeper" ToRole="Warehouse" />
+  </EntityType>
+  <EntityType Name="Nomenclature">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NomenclatureOfOrder" Relationship="FerumModel.FK_NomenclatureOfClient_Nomenclature" FromRole="Nomenclature" ToRole="NomenclatureOfOrder" />
+    <NavigationProperty Name="NomenclatureOfWarehouse" Relationship="FerumModel.FK_NomenclatureOfWarehouse_Nomenclature" FromRole="Nomenclature" ToRole="NomenclatureOfWarehouse" />
+  </EntityType>
+  <EntityType Name="NomenclatureOfOrder">
+    <Key>
+      <PropertyRef Name="NumenclatureId" />
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="NumenclatureId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="Nomenclature" Relationship="FerumModel.FK_NomenclatureOfClient_Nomenclature" FromRole="NomenclatureOfOrder" ToRole="Nomenclature" />
+    <NavigationProperty Name="Order" Relationship="FerumModel.FK_NomenclatureOfClient_Order" FromRole="NomenclatureOfOrder" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="NomenclatureOfWarehouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="NomenclatureId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Barcode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CellId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cell" Relationship="FerumModel.FK_NomenclatureOfWarehouse_Cell" FromRole="NomenclatureOfWarehouse" ToRole="Cell" />
+    <NavigationProperty Name="Nomenclature" Relationship="FerumModel.FK_NomenclatureOfWarehouse_Nomenclature" FromRole="NomenclatureOfWarehouse" ToRole="Nomenclature" />
+    <NavigationProperty Name="Shipment" Relationship="FerumModel.FK_Shipment_NomenclatureOfWarehouse" FromRole="NomenclatureOfWarehouse" ToRole="Shipment" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfCreate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ClientId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CourierId" Type="Int32" />
+    <Property Name="Effectiveness" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DateTimeOfArrivle" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Client" Relationship="FerumModel.FK_Order_Client" FromRole="Order" ToRole="Client" />
+    <NavigationProperty Name="Courier" Relationship="FerumModel.FK_Order_Courier" FromRole="Order" ToRole="Courier" />
+    <NavigationProperty Name="NomenclatureOfOrder" Relationship="FerumModel.FK_NomenclatureOfClient_Order" FromRole="Order" ToRole="NomenclatureOfOrder" />
+    <NavigationProperty Name="Queue" Relationship="FerumModel.FK_QueueOfWarehouse_Order" FromRole="Order" ToRole="Queue" />
+    <NavigationProperty Name="StepOfOrder" Relationship="FerumModel.FK_StepOfOrder_Order" FromRole="Order" ToRole="StepOfOrder" />
+  </EntityType>
+  <EntityType Name="Proccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NormativeTime" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="StepOfOrder" Relationship="FerumModel.FK_StepOfOrder_Proccess" FromRole="Proccess" ToRole="StepOfOrder" />
+  </EntityType>
+  <EntityType Name="Queue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="OrderId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WarehosueId" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Place" Type="Int32" Nullable="false" />
+    <Property Name="TypeOfQueue" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="FerumModel.FK_QueueOfWarehouse_Order" FromRole="Queue" ToRole="Order" />
+    <NavigationProperty Name="TypeOfQueue1" Relationship="FerumModel.FK_QueueOfWarehouse_TypeOfQueue" FromRole="Queue" ToRole="TypeOfQueue" />
+    <NavigationProperty Name="Warehouse" Relationship="FerumModel.FK_QueueOfWarehouse_Warehouse" FromRole="Queue" ToRole="Warehouse" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="FerumModel.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Shipment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomenclatureOfWarehouseId" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="NomenclatureOfWarehouse" Relationship="FerumModel.FK_Shipment_NomenclatureOfWarehouse" FromRole="Shipment" ToRole="NomenclatureOfWarehouse" />
+    <NavigationProperty Name="StepOfOrder" Relationship="FerumModel.FK_StepOfOrder_Shipment" FromRole="Shipment" ToRole="StepOfOrder" />
+  </EntityType>
+  <EntityType Name="StepOfOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ProcessId" Type="Int32" Nullable="false" />
+    <Property Name="OrderId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MovementId" Type="Int32" />
+    <Property Name="ShipmentId" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TimeSpent" Type="Int32" />
+    <Property Name="isDone" Type="Boolean" Nullable="false" />
+    <Property Name="DateOfStart" Type="DateTime" Precision="3" />
+    <Property Name="DateOfEnd" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Movement" Relationship="FerumModel.FK_StepOfOrder_Movement" FromRole="StepOfOrder" ToRole="Movement" />
+    <NavigationProperty Name="Order" Relationship="FerumModel.FK_StepOfOrder_Order" FromRole="StepOfOrder" ToRole="Order" />
+    <NavigationProperty Name="Proccess" Relationship="FerumModel.FK_StepOfOrder_Proccess" FromRole="StepOfOrder" ToRole="Proccess" />
+    <NavigationProperty Name="Shipment" Relationship="FerumModel.FK_StepOfOrder_Shipment" FromRole="StepOfOrder" ToRole="Shipment" />
+    <NavigationProperty Name="Trouble" Relationship="FerumModel.FK_Trouble_StepOfOrder" FromRole="StepOfOrder" ToRole="Trouble" />
+  </EntityType>
+  <EntityType Name="Storekeeper">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Effectiveness" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="MovementStorekeeper" Relationship="FerumModel.FK_MovementStorekeeper_Storekeeper" FromRole="Storekeeper" ToRole="MovementStorekeeper" />
+    <NavigationProperty Name="User" Relationship="FerumModel.FK_Storekeeper_User" FromRole="Storekeeper" ToRole="User" />
+    <NavigationProperty Name="Warehouse" Relationship="FerumModel.FK_Warehouse_Storekeeper1" FromRole="Storekeeper" ToRole="Warehouse" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Trouble">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StepOfOrderId" Type="Int32" Nullable="false" />
+    <Property Name="TypeOfTroubleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="StepOfOrder" Relationship="FerumModel.FK_Trouble_StepOfOrder" FromRole="Trouble" ToRole="StepOfOrder" />
+    <NavigationProperty Name="TypeOfTrouble" Relationship="FerumModel.FK_Trouble_TypeOfTrouble" FromRole="Trouble" ToRole="TypeOfTrouble" />
+  </EntityType>
+  <EntityType Name="TypeOfQueue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Queue" Relationship="FerumModel.FK_QueueOfWarehouse_TypeOfQueue" FromRole="TypeOfQueue" ToRole="Queue" />
+  </EntityType>
+  <EntityType Name="TypeOfTrouble">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Trouble" Relationship="FerumModel.FK_Trouble_TypeOfTrouble" FromRole="TypeOfTrouble" ToRole="Trouble" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="FIO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="Guid" Nullable="false" />
+    <Property Name="Password" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="FerumModel.FK_User_Role" FromRole="User" ToRole="Role" />
+    <NavigationProperty Name="Storekeeper" Relationship="FerumModel.FK_Storekeeper_User" FromRole="User" ToRole="Storekeeper" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StorekeeperId" Type="Int32" />
+    <NavigationProperty Name="Cell" Relationship="FerumModel.FK_Cell_Warehouse" FromRole="Warehouse" ToRole="Cell" />
+    <NavigationProperty Name="Movement" Relationship="FerumModel.FK_Movement_Warehouse" FromRole="Warehouse" ToRole="Movement" />
+    <NavigationProperty Name="MovementStorekeeper" Relationship="FerumModel.FK_MovementStorekeeper_Warehouse" FromRole="Warehouse" ToRole="MovementStorekeeper" />
+    <NavigationProperty Name="MovementStorekeeper1" Relationship="FerumModel.FK_MovementStorekeeper_Warehouse1" FromRole="Warehouse" ToRole="MovementStorekeeper" />
+    <NavigationProperty Name="Queue" Relationship="FerumModel.FK_QueueOfWarehouse_Warehouse" FromRole="Warehouse" ToRole="Queue" />
+    <NavigationProperty Name="Storekeeper" Relationship="FerumModel.FK_Warehouse_Storekeeper1" FromRole="Warehouse" ToRole="Storekeeper" />
+  </EntityType>
+  <Association Name="FK_Cell_Warehouse">
+    <End Type="FerumModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+    <End Type="FerumModel.Cell" Role="Cell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cell">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NomenclatureOfWarehouse_Cell">
+    <End Type="FerumModel.Cell" Role="Cell" Multiplicity="1" />
+    <End Type="FerumModel.NomenclatureOfWarehouse" Role="NomenclatureOfWarehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cell">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NomenclatureOfWarehouse">
+        <PropertyRef Name="CellId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courier_Client">
+    <End Type="FerumModel.Client" Role="Client" Multiplicity="1" />
+    <End Type="FerumModel.Courier" Role="Courier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Courier">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Client">
+    <End Type="FerumModel.Client" Role="Client" Multiplicity="1" />
+    <End Type="FerumModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Courier">
+    <End Type="FerumModel.Courier" Role="Courier" Multiplicity="0..1" />
+    <End Type="FerumModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CourierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Movement_Warehouse">
+    <End Type="FerumModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+    <End Type="FerumModel.Movement" Role="Movement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Movement">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StepOfOrder_Movement">
+    <End Type="FerumModel.Movement" Role="Movement" Multiplicity="0..1" />
+    <End Type="FerumModel.StepOfOrder" Role="StepOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StepOfOrder">
+        <PropertyRef Name="MovementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementStorekeeper_Storekeeper">
+    <End Type="FerumModel.Storekeeper" Role="Storekeeper" Multiplicity="1" />
+    <End Type="FerumModel.MovementStorekeeper" Role="MovementStorekeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storekeeper">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovementStorekeeper">
+        <PropertyRef Name="StorekeeperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementStorekeeper_Warehouse">
+    <End Type="FerumModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+    <End Type="FerumModel.MovementStorekeeper" Role="MovementStorekeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovementStorekeeper">
+        <PropertyRef Name="OldWarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementStorekeeper_Warehouse1">
+    <End Type="FerumModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+    <End Type="FerumModel.MovementStorekeeper" Role="MovementStorekeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovementStorekeeper">
+        <PropertyRef Name="NewWarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NomenclatureOfClient_Nomenclature">
+    <End Type="FerumModel.Nomenclature" Role="Nomenclature" Multiplicity="1" />
+    <End Type="FerumModel.NomenclatureOfOrder" Role="NomenclatureOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nomenclature">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NomenclatureOfOrder">
+        <PropertyRef Name="NumenclatureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NomenclatureOfWarehouse_Nomenclature">
+    <End Type="FerumModel.Nomenclature" Role="Nomenclature" Multiplicity="1" />
+    <End Type="FerumModel.NomenclatureOfWarehouse" Role="NomenclatureOfWarehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nomenclature">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NomenclatureOfWarehouse">
+        <PropertyRef Name="NomenclatureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NomenclatureOfClient_Order">
+    <End Type="FerumModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="FerumModel.NomenclatureOfOrder" Role="NomenclatureOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NomenclatureOfOrder">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shipment_NomenclatureOfWarehouse">
+    <End Type="FerumModel.NomenclatureOfWarehouse" Role="NomenclatureOfWarehouse" Multiplicity="1" />
+    <End Type="FerumModel.Shipment" Role="Shipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NomenclatureOfWarehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shipment">
+        <PropertyRef Name="NomenclatureOfWarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueOfWarehouse_Order">
+    <End Type="FerumModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="FerumModel.Queue" Role="Queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Queue">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StepOfOrder_Order">
+    <End Type="FerumModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="FerumModel.StepOfOrder" Role="StepOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StepOfOrder">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StepOfOrder_Proccess">
+    <End Type="FerumModel.Proccess" Role="Proccess" Multiplicity="1" />
+    <End Type="FerumModel.StepOfOrder" Role="StepOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proccess">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StepOfOrder">
+        <PropertyRef Name="ProcessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueOfWarehouse_TypeOfQueue">
+    <End Type="FerumModel.TypeOfQueue" Role="TypeOfQueue" Multiplicity="1" />
+    <End Type="FerumModel.Queue" Role="Queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfQueue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Queue">
+        <PropertyRef Name="TypeOfQueue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueOfWarehouse_Warehouse">
+    <End Type="FerumModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+    <End Type="FerumModel.Queue" Role="Queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Queue">
+        <PropertyRef Name="WarehosueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Type="FerumModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="FerumModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StepOfOrder_Shipment">
+    <End Type="FerumModel.Shipment" Role="Shipment" Multiplicity="0..1" />
+    <End Type="FerumModel.StepOfOrder" Role="StepOfOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shipment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StepOfOrder">
+        <PropertyRef Name="ShipmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trouble_StepOfOrder">
+    <End Type="FerumModel.StepOfOrder" Role="StepOfOrder" Multiplicity="1" />
+    <End Type="FerumModel.Trouble" Role="Trouble" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StepOfOrder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trouble">
+        <PropertyRef Name="StepOfOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Storekeeper_User">
+    <End Type="FerumModel.User" Role="User" Multiplicity="1" />
+    <End Type="FerumModel.Storekeeper" Role="Storekeeper" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Storekeeper">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Warehouse_Storekeeper1">
+    <End Type="FerumModel.Storekeeper" Role="Storekeeper" Multiplicity="0..1" />
+    <End Type="FerumModel.Warehouse" Role="Warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storekeeper">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Warehouse">
+        <PropertyRef Name="StorekeeperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trouble_TypeOfTrouble">
+    <End Type="FerumModel.TypeOfTrouble" Role="TypeOfTrouble" Multiplicity="1" />
+    <End Type="FerumModel.Trouble" Role="Trouble" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfTrouble">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trouble">
+        <PropertyRef Name="TypeOfTroubleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
