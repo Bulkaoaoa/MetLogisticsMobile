@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\FerumDesktop\FerumDesktop\obj\Debug\
+C:\Users\Student20\Source\Repos\Bulkaoaoa\MetLogisticsMobile\FerumDesktop\FerumDesktop\obj\Debug\
 FerumDesktop
 none
 false
 DEBUG;TRACE
-D:\FerumDesktop\FerumDesktop\App.xaml
+C:\Users\Student20\Source\Repos\Bulkaoaoa\MetLogisticsMobile\FerumDesktop\FerumDesktop\App.xaml
 81519073535
 2542814261
-40-1181300622
-181717165736
+41-1935870406
+18-212196638
 MainWindow.xaml;Pages\DirectorPages\MainPage.xaml;Pages\DirectorPages\ReportByDayPAge.xaml;Pages\DispatcherPages\MainPage.xaml;Pages\DispatcherPages\QueueCarsPage.xaml;Pages\GeneralPages\AuthorizationPage.xaml;Pages\StorekeeperPages\MainPage.xaml;Pages\StorekeeperPages\ReportProblemPage.xaml;
 
-False
+True
 
